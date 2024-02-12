@@ -19,6 +19,12 @@ config/icon="res://resources/icon.svg"
 
 OnScreenTerminal="*res://addons/on_screen_terminal/on_screen_terminal.tscn"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/on_screen_terminal/plugin.cfg")
@@ -32,3 +38,4 @@ enabled=true
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(1, 1, 1, 1)
