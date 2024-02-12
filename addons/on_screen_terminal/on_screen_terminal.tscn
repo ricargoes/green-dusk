@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx5pn6oepr8y"]
+
+[ext_resource type="Script" path="res://addons/on_screen_terminal/on_screen_terminal.gd" id="1_mr3m6"]
+
+[node name="OnScreenTerminal" type="CanvasLayer"]
+script = ExtResource("1_mr3m6")
+
+[node name="Terminal" type="TextEdit" parent="."]
+offset_right = 119.0
+offset_bottom = 79.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+editable = false
+wrap_mode = 1
