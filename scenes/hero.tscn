@@ -1,15 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://f31q7ameb6hm"]
+[gd_scene load_steps=4 format=3 uid="uid://f31q7ameb6hm"]
 
 [ext_resource type="Texture2D" uid="uid://5rou5wm7frds" path="res://resources/icon.svg" id="1_06r7y"]
+[ext_resource type="Script" path="res://scenes/hero.gd" id="1_omy4t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihnas"]
 size = Vector2(128, 128)
 
 [node name="Hero" type="CharacterBody2D"]
 floor_stop_on_slope = false
+script = ExtResource("1_omy4t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_06r7y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ihnas")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -270)
+limit_top = 270
+limit_bottom = 1080
