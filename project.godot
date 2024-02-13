@@ -18,6 +18,7 @@ config/icon="res://resources/icon.svg"
 [autoload]
 
 OnScreenTerminal="*res://addons/on_screen_terminal/on_screen_terminal.tscn"
+GameConstants="*res://scenes/global/game_constants.gd"
 
 [display]
 

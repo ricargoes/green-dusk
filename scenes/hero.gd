@@ -1,13 +1,12 @@
 extends CharacterBody2D
 
 const JUMP_FORCE = 3000
-const GRAVITY: float = 980.0
-const MAX_JUMP_ENERGY: float = 0.3
+const MAX_JUMP_IMPULSE_TIME: float = 0.3
 
 @export
 var player_speed = 20
 
-var jump_energy: float = 0.0
+var jump_impulse_time: float = 0.0
 
 func _ready() -> void:
 	velocity.x = player_speed
@@ -15,13 +14,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if is_on_floor():
-		jump_energy = MAX_JUMP_ENERGY
+		jump_impulse_time = MAX_JUMP_IMPULSE_TIME
 	else:
-		jump_energy -= delta
-		velocity.y += delta*GRAVITY
+		jump_impulse_time -= delta
+		velocity.y += delta*GameConstants.GRAVITY
 	
-	if Input.is_action_pressed("jump") and jump_energy > 0:
+	if Input.is_action_pressed("jump") and jump_impulse_time > 0:
 		velocity.y -= delta*JUMP_FORCE
 	
-	
 	move_and_slide()
+	
+	if global_position.y > GameConstants.DEATH_GLOBAL_Y_POSITION:
+		die()
+
+func die():
+	get_tree().quit()
