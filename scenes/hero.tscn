@@ -45,3 +45,16 @@ stretch_margin_bottom = 3
 texture_under = ExtResource("3_kjtew")
 texture_over = ExtResource("4_r372t")
 texture_progress = ExtResource("4_5m4m8")
+
+[node name="ShoulderPivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ShoulderPivot"]
+rotation = -1.5708
+texture = ExtResource("4_5m4m8")
+offset = Vector2(0, 50)
+
+[node name="ShootingCooldown" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="ShootingCooldown" to="." method="shoot"]

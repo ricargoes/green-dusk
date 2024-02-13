@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 
 func hurt(damage: float):
 	life_points -= damage
+	OnScreenTerminal.log(life_points)
 	if life_points <= 0:
 		die()
 

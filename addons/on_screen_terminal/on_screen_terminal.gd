@@ -9,9 +9,9 @@ func _ready() -> void:
 	if not enabled:
 		hide()
 
-func log(message: String) -> void:
+func log(message: Variant) -> void:
 	if enabled:
-		$Terminal.text += "\n> " + message
+		$Terminal.text += "\n> " + str(message)
 		$Terminal.get_v_scroll_bar().value = $Terminal.get_v_scroll_bar().max_value
 	
 	
