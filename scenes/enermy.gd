@@ -2,13 +2,13 @@ extends CharacterBody2D
 
 
 @export
-var xp_value = 200
+var xp_value: int = 200
 
 @export
-var life_points = 100
+var life_points: float = 100.0
 
 @export
-var contact_dps = 20
+var contact_dps: float = 50.0
 
 signal defeated(who)
 
@@ -24,7 +24,12 @@ func _process(delta: float) -> void:
 	
 	for body in $ContactDamageArea.get_overlapping_bodies():
 		if body.has_method("hurt"):
-			body.hurt(contact_dps)
+			body.hurt(contact_dps*delta)
+
+func hurt(damage: float):
+	life_points -= damage
+	if life_points <= 0:
+		die()
 
 func die():
 	defeated.emit(self)

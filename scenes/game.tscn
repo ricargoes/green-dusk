@@ -16,7 +16,6 @@ position = Vector2(1073, 521)
 
 [node name="Hero" parent="." instance=ExtResource("1_2n3he")]
 position = Vector2(718, 641)
-player_speed = 200
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(719, 783)
