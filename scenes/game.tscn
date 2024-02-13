@@ -1,20 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwl37y77358r2"]
+[gd_scene load_steps=5 format=3 uid="uid://dwl37y77358r2"]
 
 [ext_resource type="PackedScene" uid="uid://f31q7ameb6hm" path="res://scenes/hero.tscn" id="1_2n3he"]
 [ext_resource type="Texture2D" uid="uid://5rou5wm7frds" path="res://resources/icon.svg" id="1_hu7ex"]
+[ext_resource type="PackedScene" uid="uid://csfarad5ilhw6" path="res://scenes/enermy.tscn" id="3_i8n50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7e0y"]
 size = Vector2(127.778, 128)
 
 [node name="Game" type="Node2D"]
 
+[node name="Enermies" type="Node2D" parent="."]
+
+[node name="Enermy" parent="Enermies" instance=ExtResource("3_i8n50")]
+position = Vector2(1073, 521)
+
 [node name="Hero" parent="." instance=ExtResource("1_2n3he")]
 position = Vector2(718, 641)
-player_speed = 300
+player_speed = 200
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(719, 783)
 scale = Vector2(9, 1)
+collision_layer = 4
+collision_mask = 3
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]

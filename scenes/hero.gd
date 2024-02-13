@@ -27,5 +27,8 @@ func _process(delta: float) -> void:
 	if global_position.y > GameConstants.DEATH_GLOBAL_Y_POSITION:
 		die()
 
+func hurt(damage):
+	die()
+
 func die():
 	get_tree().quit()

@@ -38,6 +38,12 @@ jump={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="hero"
+2d_physics/layer_2="enermies"
+2d_physics/layer_3="terrain"
+
 [on_screen_terminal]
 
 size=Vector2(400, 200)
