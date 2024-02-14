@@ -10,6 +10,10 @@ var life_points: float = 100
 @export
 var arm_rotation_speed: float = 2*PI
 
+var level: int = 0
+var xp: int = 0
+var xp_threshold: int = 100
+
 var jump_impulse_time: float = 0.0
 
 signal shot(spawn_position: Vector2, orientation: float)
@@ -17,6 +21,7 @@ signal shot(spawn_position: Vector2, orientation: float)
 func _ready() -> void:
 	velocity.x = player_speed
 	$UI.sync_life(life_points)
+	level_up()
 
 func _process(delta: float) -> void:
 	
@@ -65,4 +70,25 @@ func aim_to(location: Vector2, delta: float):
 	var target_orientation = $ShoulderPivot.global_position.angle_to_point(location)
 	var rotation_strength = fposmod(target_orientation-$ShoulderPivot.rotation, 2*PI)/PI - 1
 	$ShoulderPivot.rotation -= rotation_strength*arm_rotation_speed*delta
-	
+
+func get_xp(amount: int):
+	xp += amount
+	if(xp >= xp_threshold):
+		xp -= xp_threshold
+		await level_up()
+		print(xp)
+		print(xp_threshold)
+	get_tree().paused = false
+
+func level_up():
+	get_tree().paused = true
+	$UI/LevelUpScreen.pick_powerup()
+	var powerup = await $UI/LevelUpScreen.powerup_selected
+	get_tree().paused = false
+	level += 1
+	xp_threshold = level*100
+	OnScreenTerminal.log(powerup)
+
+
+func _on_enermy_defeated(who: Variant) -> void:
+	get_xp(who.xp_value)

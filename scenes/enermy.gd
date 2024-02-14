@@ -5,7 +5,7 @@ extends CharacterBody2D
 var xp_value: int = 200
 
 @export
-var life_points: float = 100.0
+var life_points: float = 50.0
 
 @export
 var contact_dps: float = 50.0

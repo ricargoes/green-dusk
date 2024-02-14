@@ -16,6 +16,9 @@ script = ExtResource("1_17qkh")
 [node name="Enermy" parent="Enermies" instance=ExtResource("3_i8n50")]
 position = Vector2(1073, 521)
 
+[node name="Enermy2" parent="Enermies" instance=ExtResource("3_i8n50")]
+position = Vector2(1207, 563)
+
 [node name="Hero" parent="." instance=ExtResource("1_2n3he")]
 position = Vector2(718, 641)
 
@@ -34,4 +37,6 @@ shape = SubResource("RectangleShape2D_y7e0y")
 
 [node name="Bullets" type="Node2D" parent="."]
 
+[connection signal="defeated" from="Enermies/Enermy" to="Hero" method="_on_enermy_defeated"]
+[connection signal="defeated" from="Enermies/Enermy2" to="Hero" method="_on_enermy_defeated"]
 [connection signal="shot" from="Hero" to="." method="_on_hero_shot"]
