@@ -26,8 +26,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if is_on_floor():
+		$Body.animation = "run"
+		$Legs.animation = "run"
+		$JumpingShape.disabled = true
+		$RunningShape.disabled = false
 		jump_impulse_time = MAX_JUMP_IMPULSE_TIME
 	else:
+		$Body.animation = "jump"
+		$Legs.animation = "jump"
+		$JumpingShape.disabled = false
+		$RunningShape.disabled = true
 		jump_impulse_time -= delta
 		velocity.y += delta*GameConstants.GRAVITY
 	
@@ -76,8 +84,6 @@ func get_xp(amount: int):
 	if(xp >= xp_threshold):
 		xp -= xp_threshold
 		await level_up()
-		print(xp)
-		print(xp_threshold)
 	get_tree().paused = false
 
 func level_up():

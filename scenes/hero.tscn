@@ -1,26 +1,101 @@
-[gd_scene load_steps=9 format=3 uid="uid://f31q7ameb6hm"]
+[gd_scene load_steps=19 format=3 uid="uid://f31q7ameb6hm"]
 
-[ext_resource type="Texture2D" uid="uid://5rou5wm7frds" path="res://resources/icon.svg" id="1_06r7y"]
 [ext_resource type="Script" path="res://scenes/hero.gd" id="1_omy4t"]
+[ext_resource type="Texture2D" uid="uid://cipplrmttgmy4" path="res://resources/sprites/pj/pjHead.png" id="2_3f0u1"]
+[ext_resource type="Texture2D" uid="uid://dwvr6kpmo3xmj" path="res://resources/sprites/pj/pjBodyJumping.png" id="3_8qtcw"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="3_fjqen"]
+[ext_resource type="Texture2D" uid="uid://bp2td4rfr1wwv" path="res://resources/sprites/pj/pjJumpingLegs.png" id="3_gquj7"]
 [ext_resource type="Texture2D" uid="uid://bd5pw0yjs0ft3" path="res://resources/ui/empty_v_bar.png" id="3_kjtew"]
+[ext_resource type="Texture2D" uid="uid://bhf0omvlasllj" path="res://resources/sprites/pj/pjBodyRunning.png" id="4_2trbn"]
 [ext_resource type="Texture2D" uid="uid://b58k1lvplemds" path="res://resources/ui/full_fuel_bar.png" id="4_5m4m8"]
 [ext_resource type="Texture2D" uid="uid://vt87ye3ybyhb" path="res://resources/ui/bar_v_border.png" id="4_r372t"]
+[ext_resource type="Texture2D" uid="uid://ciownt0dopb4i" path="res://resources/sprites/pj/pjRunningLegs1.png" id="6_ejbq7"]
+[ext_resource type="Texture2D" uid="uid://ced1gvm3ejp8b" path="res://resources/sprites/pj/pjRunningLegs2.png" id="7_34yky"]
 [ext_resource type="PackedScene" uid="uid://cdxbhwtpcrqwx" path="res://scenes/level_up_screen.tscn" id="7_y4fjo"]
+[ext_resource type="Texture2D" uid="uid://e7iq4rrlcxb8" path="res://resources/sprites/pj/pjArmSword.png" id="8_8jdhp"]
+[ext_resource type="Texture2D" uid="uid://clgvcank1n2xd" path="res://resources/sprites/pj/pjArmGun.png" id="8_cuksm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihnas"]
-size = Vector2(128, 128)
+[sub_resource type="SpriteFrames" id="SpriteFrames_ldks5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8qtcw")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2trbn")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rcvp2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gquj7")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ejbq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_34yky")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yq1y"]
+size = Vector2(76, 168)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lk7si"]
+size = Vector2(53, 137)
 
 [node name="Hero" type="CharacterBody2D"]
 collision_mask = 4
 floor_stop_on_slope = false
 script = ExtResource("1_omy4t")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_06r7y")
+[node name="Head" type="Sprite2D" parent="."]
+texture = ExtResource("2_3f0u1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ihnas")
+[node name="Body" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ldks5")
+animation = &"jump"
+
+[node name="Legs" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rcvp2")
+animation = &"run"
+autoplay = "run"
+
+[node name="SwordArm" type="Sprite2D" parent="."]
+texture = ExtResource("8_8jdhp")
+
+[node name="ShoulderPivot" type="Node2D" parent="."]
+position = Vector2(0, -27)
+
+[node name="PistolArm" type="Sprite2D" parent="ShoulderPivot"]
+texture = ExtResource("8_cuksm")
+offset = Vector2(0, 27)
+
+[node name="RunningShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8yq1y")
+
+[node name="JumpingShape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(5.5, -12.5)
+shape = SubResource("RectangleShape2D_lk7si")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -270)
@@ -32,7 +107,6 @@ script = ExtResource("3_fjqen")
 
 [node name="LifeBar" type="TextureProgressBar" parent="UI"]
 unique_name_in_owner = true
-visible = false
 offset_left = 35.0
 offset_top = 25.0
 offset_right = 72.0
@@ -51,13 +125,6 @@ texture_progress = ExtResource("4_5m4m8")
 [node name="LevelUpScreen" parent="UI" instance=ExtResource("7_y4fjo")]
 process_mode = 3
 visible = false
-
-[node name="ShoulderPivot" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="ShoulderPivot"]
-rotation = -1.5708
-texture = ExtResource("4_5m4m8")
-offset = Vector2(0, 50)
 
 [node name="ShootingCooldown" type="Timer" parent="."]
 wait_time = 0.3

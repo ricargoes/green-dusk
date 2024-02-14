@@ -36,7 +36,7 @@ const POWERUPS = {
 		'description': 'Orbits around you hitting enermies and casting down lightning like the god of thunder you are',
 		'icon': preload("res://resources/icon.svg")
 	},
-	'Antiair dron': {
+	'Antiair bird': {
 		'type': PowerUpType.Weapon,
 		'description': 'Target airborne enermies and make them bit the dust',
 		'icon': preload("res://resources/icon.svg")
@@ -54,6 +54,11 @@ const POWERUPS = {
 	"Invisibility cloak": {
 		'type': PowerUpType.Passive,
 		'description': 'Your father left it to you. You are harder to see and enemies tend to fail to hit you.',
+		'icon': preload("res://resources/icon.svg")
+	},
+	'Bad coffee': {
+		'type': PowerUpType.Passive,
+		'description': 'Your are getting nervous rather than alert. Well, everything helps. Reduces cooldowns.',
 		'icon': preload("res://resources/icon.svg")
 	},
 	'Dark Necrogrimoire': {
