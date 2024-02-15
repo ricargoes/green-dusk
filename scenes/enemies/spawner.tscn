@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqlyqc1ygoqus"]
+
+[ext_resource type="Script" path="res://scenes/enemies/spawner.gd" id="1_owicc"]
+
+[node name="Spawner" type="Marker2D" groups=["spawners"]]
+script = ExtResource("1_owicc")
+
+[node name="SpawningCooldown" type="Timer" parent="."]
+
+[connection signal="timeout" from="SpawningCooldown" to="." method="spawn"]

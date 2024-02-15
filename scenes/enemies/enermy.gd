@@ -5,7 +5,7 @@ var resource_type = PoolManager.PoolResource.BASIC_ENEMY
 @export
 var xp_value: int = 200
 @export
-var max_life_points: float = 100.0
+var max_life_points: float = 20.0
 @export
 var contact_dps: float = 50.0
 

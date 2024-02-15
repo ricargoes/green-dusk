@@ -8,6 +8,8 @@ var player_speed: int = 200
 @export
 var max_life_points: int = 50
 @export
+var shooting_cooldown: float = 0.3
+@export
 var arm_rotation_speed: float = 2*PI
 
 var life_points: float = 50.0
@@ -21,6 +23,7 @@ signal shot(spawn_position: Vector2, orientation: float)
 signal died
 
 func _ready() -> void:
+	$ShootingCooldown.wait_time = shooting_cooldown
 	life_points = max_life_points
 	velocity.x = player_speed
 	$UI.sync_life(life_points, max_life_points)
@@ -52,9 +55,6 @@ func _process(delta: float) -> void:
 	
 	var lock_on_target = select_target()
 	aim_to(lock_on_target.global_position, delta)
-	
-	if Input.is_action_just_pressed("ui_accept"): # To be removed
-		shoot()
 
 func hurt(damage: float):
 	life_points -= damage

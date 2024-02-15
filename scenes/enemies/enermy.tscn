@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://csfarad5ilhw6"]
 
-[ext_resource type="Texture2D" uid="uid://5rou5wm7frds" path="res://resources/icon.svg" id="1_0de8g"]
-[ext_resource type="Script" path="res://scenes/enermy.gd" id="1_i2q4i"]
+[ext_resource type="Script" path="res://scenes/enemies/enermy.gd" id="1_toofk"]
+[ext_resource type="Texture2D" uid="uid://5rou5wm7frds" path="res://resources/icon.svg" id="2_6ri2b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwkce"]
 size = Vector2(128, 126)
@@ -12,11 +12,11 @@ radius = 55.0364
 [node name="Enermy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("1_i2q4i")
+script = ExtResource("1_toofk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0.113725, 0.196078, 1)
-texture = ExtResource("1_0de8g")
+texture = ExtResource("2_6ri2b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bwkce")
