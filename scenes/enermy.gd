@@ -3,10 +3,8 @@ extends CharacterBody2D
 
 @export
 var xp_value: int = 200
-
 @export
-var life_points: float = 50.0
-
+var life_points: float = 100.0
 @export
 var contact_dps: float = 50.0
 
@@ -28,7 +26,6 @@ func _process(delta: float) -> void:
 
 func hurt(damage: float):
 	life_points -= damage
-	OnScreenTerminal.log(life_points)
 	if life_points <= 0:
 		die()
 

@@ -6,7 +6,9 @@ const MAX_JUMP_IMPULSE_TIME: float = 0.3
 @export
 var player_speed: int = 200
 @export
-var life_points: float = 100
+var max_life_points: int = 50
+@export
+var life_points: float = 50.0
 @export
 var arm_rotation_speed: float = 2*PI
 
@@ -17,10 +19,11 @@ var xp_threshold: int = 100
 var jump_impulse_time: float = 0.0
 
 signal shot(spawn_position: Vector2, orientation: float)
+signal died
 
 func _ready() -> void:
 	velocity.x = player_speed
-	$UI.sync_life(life_points)
+	$UI.sync_life(life_points, max_life_points)
 	level_up()
 
 func _process(delta: float) -> void:
@@ -55,12 +58,12 @@ func _process(delta: float) -> void:
 
 func hurt(damage: float):
 	life_points -= damage
-	$UI.sync_life(life_points)
+	$UI.sync_life(life_points, max_life_points)
 	if life_points <= 0:
 		die()
 
 func die():
-	get_tree().quit()
+	died.emit()
 
 func shoot():
 	var orientation = $ShoulderPivot.rotation
