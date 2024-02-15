@@ -20,6 +20,7 @@ config/icon="res://resources/icon.svg"
 OnScreenTerminal="*res://addons/on_screen_terminal/on_screen_terminal.tscn"
 GameConstants="*res://scenes/global/game_constants.gd"
 GameLibrary="*res://scenes/global/game_library.gd"
+PoolManager="*res://scenes/global/pool_manager.gd"
 
 [display]
 

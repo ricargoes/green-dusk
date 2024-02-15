@@ -8,10 +8,9 @@ var player_speed: int = 200
 @export
 var max_life_points: int = 50
 @export
-var life_points: float = 50.0
-@export
 var arm_rotation_speed: float = 2*PI
 
+var life_points: float = 50.0
 var level: int = 0
 var xp: int = 0
 var xp_threshold: int = 100
@@ -22,6 +21,7 @@ signal shot(spawn_position: Vector2, orientation: float)
 signal died
 
 func _ready() -> void:
+	life_points = max_life_points
 	velocity.x = player_speed
 	$UI.sync_life(life_points, max_life_points)
 	level_up()

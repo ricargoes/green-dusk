@@ -1,7 +1,5 @@
 extends Node2D
 
-const BULLET_SCENE = preload("res://scenes/bullet.tscn")
-
 @export
 var run_time: float = 300.0
 
@@ -12,7 +10,7 @@ func _ready() -> void:
 	$SunsetTime.start(run_time)
 
 func spawn_bullet(starting_position: Vector2, orientation: float, is_player: bool):
-	var bullet = BULLET_SCENE.instantiate()
+	var bullet = PoolManager.get_instance(PoolManager.PoolResource.BULLET)
 	bullet.global_position = starting_position
 	bullet.orientation = orientation
 	bullet.is_player = is_player

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var resource_type = PoolManager.PoolResource.BULLET
 @export
 var is_player: bool = false
 @export
@@ -9,7 +10,7 @@ var bullet_speed: float = 1000
 @export
 var damage: float = 10.0
 
-func _ready() -> void:
+func _enter_tree():
 	collision_mask = 4
 	if is_player:
 		collision_mask += 2
@@ -24,4 +25,4 @@ func _process(delta: float) -> void:
 		if collision.get_collider().has_method("hurt"):
 			collision.get_collider().hurt(damage)
 		
-		queue_free()
+		PoolManager.shelf_instance(self)
