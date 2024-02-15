@@ -147,6 +147,5 @@ autostart = true
 [connection signal="defeated" from="Enermies/Enermy" to="Hero" method="_on_enermy_defeated"]
 [connection signal="defeated" from="Enermies/Enermy2" to="Hero" method="_on_enermy_defeated"]
 [connection signal="died" from="Hero" to="." method="lose"]
-[connection signal="shot" from="Hero" to="." method="_on_hero_shot"]
 [connection signal="timeout" from="SunsetTime" to="." method="win"]
 [connection signal="timeout" from="SpawnerChecker" to="." method="_on_spawner_checker_timeout"]

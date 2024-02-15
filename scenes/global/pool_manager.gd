@@ -1,5 +1,7 @@
 extends Node
 
+var game
+
 enum PoolResource {
 	BULLET,
 	BASIC_ENEMY,
@@ -26,7 +28,8 @@ func get_instance(resource_type: PoolResource) -> Node2D:
 
 func shelf_instance(instance: Node2D):
 	var resource_type: PoolResource = instance.resource_type
-	instance.get_parent().remove_child(instance)
+	if instance.is_inside_tree():
+		instance.get_parent().remove_child(instance)
 	exile_instance(instance)
 	pool[resource_type].append(instance)
 

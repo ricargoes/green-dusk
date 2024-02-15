@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4j734mhicv8l"]
+
+[ext_resource type="Texture2D" uid="uid://ckxkx6hu7svgw" path="res://resources/sprites/weapons/escopeta.png" id="1_1u61a"]
+[ext_resource type="Script" path="res://scenes/powerups/shotgun.gd" id="2_6cpp8"]
+
+[sub_resource type="Animation" id="Animation_qy8v3"]
+resource_name = "pacing"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -120), Vector2(50, -120), Vector2(-50, -120), Vector2(0, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_xs8dp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38p2m"]
+_data = {
+"RESET": SubResource("Animation_xs8dp"),
+"pacing": SubResource("Animation_qy8v3")
+}
+
+[node name="Shotgun" type="Sprite2D"]
+texture = ExtResource("1_1u61a")
+offset = Vector2(35, 7)
+script = ExtResource("2_6cpp8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_38p2m")
+}
+autoplay = "pacing"
+speed_scale = 2.0
+
+[node name="Cooldown" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="shoot"]

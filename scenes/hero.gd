@@ -16,10 +16,10 @@ var life_points: float = 50.0
 var level: int = 0
 var xp: int = 0
 var xp_threshold: int = 100
+var powerups = { "Pistol": 1 }
 
 var jump_impulse_time: float = 0.0
 
-signal shot(spawn_position: Vector2, orientation: float)
 signal died
 
 func _ready() -> void:
@@ -67,7 +67,8 @@ func die():
 
 func shoot():
 	var orientation = $ShoulderPivot.rotation
-	shot.emit($ShoulderPivot.global_position + Vector2.from_angle(orientation)*120, orientation)
+	var game = get_tree().current_scene
+	game.spawn_bullet($ShoulderPivot.global_position + Vector2.from_angle(orientation)*120, orientation, true)
 
 func select_target() -> Node2D:
 	var target = self
@@ -79,8 +80,8 @@ func select_target() -> Node2D:
 
 func aim_to(location: Vector2, delta: float):
 	var target_orientation = $ShoulderPivot.global_position.angle_to_point(location)
-	var rotation_strength = fposmod(target_orientation-$ShoulderPivot.rotation, 2*PI)/PI - 1
-	$ShoulderPivot.rotation -= rotation_strength*arm_rotation_speed*delta
+	var rotation_strength = fmod(target_orientation-$ShoulderPivot.rotation, PI)/PI
+	$ShoulderPivot.rotation += rotation_strength*arm_rotation_speed*delta
 
 func get_xp(amount: int):
 	xp += amount
@@ -95,8 +96,19 @@ func level_up():
 	var powerup = await $UI/LevelUpScreen.powerup_selected
 	get_tree().paused = false
 	level += 1
-	xp_threshold = level*100
-	OnScreenTerminal.log(powerup)
+	xp_threshold = level*1000
+	equip_powerup(powerup)
+
+func equip_powerup(powerup_name: String):
+	if not powerups.has(powerup_name):
+		powerups[powerup_name] = 1
+		var powerup = GameLibrary.POWERUPS[powerup_name]
+		if powerup["type"] == GameLibrary.PowerUpType.Weapon:
+			var weapon_instance = powerup.scene.instantiate()
+			add_child(weapon_instance)
+	else:
+		powerups[powerup_name] += 1
+		
 
 
 func _on_enermy_defeated(who: Variant) -> void:

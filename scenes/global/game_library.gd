@@ -9,37 +9,44 @@ const POWERUPS = {
 	'Pistol': {
 		'type': PowerUpType.Weapon,
 		'description': 'Basic but reliable weapon, shoots bullets one at a time',
-		'icon': preload("res://resources/icon.svg")
+		'icon': preload("res://resources/icon.svg"),
+		'scene': preload("res://scenes/powerups/shotgun.tscn")
 	},
 	'Sword and shield': {
 		'type': PowerUpType.Weapon,
 		'description': 'Slash nearby enermies while an orbiting shield protects you',
-		'icon': preload("res://resources/icon.svg")
+		'icon': preload("res://resources/icon.svg"),
+		'scene': preload("res://scenes/powerups/shotgun.tscn")
 	},
 	'Boomerang': {
 		'type': PowerUpType.Weapon,
 		'description': 'Goes back and forth in a straigh line',
-		'icon': preload("res://resources/icon.svg")
+		'icon': preload("res://resources/icon.svg"),
+		'scene': preload("res://scenes/powerups/shotgun.tscn")
 	},
 	'Shotgun': {
 		'type': PowerUpType.Weapon,
 		'description': 'Blast in a wide arc to the nearest enemy',
-		'icon': preload("res://resources/icon.svg")
+		'icon': preload("res://resources/icon.svg"),
+		'scene': preload("res://scenes/powerups/shotgun.tscn")
 	},
 	'Rocket launcher': {
 		'type': PowerUpType.Weapon,
 		'description': 'Slow but powerful attack in an area',
-		'icon': preload("res://resources/icon.svg")
+		'icon': preload("res://resources/icon.svg"),
+		'scene': preload("res://scenes/powerups/shotgun.tscn")
 	},
 	'Mjolnir': {
 		'type': PowerUpType.Weapon,
 		'description': 'Orbits around you hitting enermies and casting down lightning like the god of thunder you are',
-		'icon': preload("res://resources/icon.svg")
+		'icon': preload("res://resources/icon.svg"),
+		'scene': preload("res://scenes/powerups/shotgun.tscn")
 	},
 	'Antiair bird': {
 		'type': PowerUpType.Weapon,
 		'description': 'Target airborne enermies and make them bit the dust',
-		'icon': preload("res://resources/icon.svg")
+		'icon': preload("res://resources/icon.svg"),
+		'scene': preload("res://scenes/powerups/shotgun.tscn")
 	},
 	'Hollow point shells': {
 		'type': PowerUpType.Passive,

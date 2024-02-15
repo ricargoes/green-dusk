@@ -19,11 +19,6 @@ func spawn_bullet(starting_position: Vector2, orientation: float, is_player: boo
 	bullet.is_player = is_player
 	$Bullets.add_child(bullet)
 
-
-func _on_hero_shot(spawn_position: Vector2, orientation: float) -> void:
-	spawn_bullet(spawn_position, orientation, true)
-
-
 func win() -> void:
 	get_tree().paused = true
 	$CanvasLayer/SunsetTint.color = Color("ff010000")
