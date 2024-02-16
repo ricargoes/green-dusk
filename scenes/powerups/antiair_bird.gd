@@ -5,12 +5,12 @@ var speed: float = 900
 @export
 var damage: float = 24.0
 @export
-var cooldown_time: float = 0.5
+var cooldown_time: float = 1.0
 
 var target: Enemy = null
 
 func _ready() -> void:
-	$Cooldown.wait_time = cooldown_time
+	$Cooldown.wait_time = cooldown_time - 0.5
 
 func _process(delta: float) -> void:
 	if target == null or target.dead:
@@ -33,6 +33,6 @@ func _process(delta: float) -> void:
 func attack():
 	$AttackMove.play("attack")
 
-func _on_attack_move_animation_finished(anim_name: StringName) -> void:
+func _on_attack_move_animation_finished(_anim_name: StringName) -> void:
 	for enemy: Enemy in get_overlapping_bodies():
 		enemy.hurt(damage)

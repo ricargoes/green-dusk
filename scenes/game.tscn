@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwl37y77358r2"]
+[gd_scene load_steps=12 format=3 uid="uid://dwl37y77358r2"]
 
 [ext_resource type="PackedScene" uid="uid://f31q7ameb6hm" path="res://scenes/hero.tscn" id="1_2n3he"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_17qkh"]
 [ext_resource type="Texture2D" uid="uid://5rou5wm7frds" path="res://resources/icon.svg" id="1_hu7ex"]
 [ext_resource type="PackedScene" uid="uid://bqlyqc1ygoqus" path="res://scenes/enemies/spawner.tscn" id="2_jktu5"]
 [ext_resource type="PackedScene" uid="uid://csfarad5ilhw6" path="res://scenes/enemies/enermy.tscn" id="3_i8n50"]
+[ext_resource type="PackedScene" uid="uid://bu35il1yoex0l" path="res://scenes/activador.tscn" id="3_winff"]
 [ext_resource type="PackedScene" uid="uid://df4mxycb4gc4m" path="res://scenes/end_screen.tscn" id="5_52ho5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7e0y"]
@@ -74,13 +75,23 @@ _data = {
 [node name="Game" type="Node2D"]
 script = ExtResource("1_17qkh")
 run_time = 10.0
-proximity_disable = 1
 
 [node name="Spawners" type="Node2D" parent="."]
 
-[node name="Spawner" parent="Spawners" instance=ExtResource("2_jktu5")]
+[node name="Spawner" parent="Spawners" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("2_jktu5")]
 position = Vector2(2101, 500)
-spawning_frequency = 1.0
+spawning_frequency = 3.0
+lifetime = 2.0
+destination = NodePath("../../Helpers/Marker2D")
+activator = NodePath("../../Helpers/Activator")
+
+[node name="Helpers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Helpers"]
+position = Vector2(1500, 200)
+
+[node name="Activator" parent="Helpers" instance=ExtResource("3_winff")]
+position = Vector2(964, 465)
 
 [node name="Enermies" type="Node2D" parent="."]
 
@@ -140,12 +151,7 @@ visible = false
 
 [node name="SunsetTime" type="Timer" parent="."]
 
-[node name="SpawnerChecker" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
 [connection signal="defeated" from="Enermies/Enermy" to="Hero" method="_on_enermy_defeated"]
 [connection signal="defeated" from="Enermies/Enermy2" to="Hero" method="_on_enermy_defeated"]
 [connection signal="died" from="Hero" to="." method="lose"]
 [connection signal="timeout" from="SunsetTime" to="." method="win"]
-[connection signal="timeout" from="SpawnerChecker" to="." method="_on_spawner_checker_timeout"]

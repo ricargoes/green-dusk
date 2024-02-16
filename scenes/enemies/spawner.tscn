@@ -7,4 +7,8 @@ script = ExtResource("1_owicc")
 
 [node name="SpawningCooldown" type="Timer" parent="."]
 
+[node name="Lifetime" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="SpawningCooldown" to="." method="spawn"]
+[connection signal="timeout" from="Lifetime" to="." method="disable"]

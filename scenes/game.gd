@@ -2,8 +2,6 @@ extends Node2D
 
 @export
 var run_time: float = 300.0
-@export
-var proximity_disable: int = 1200
 
 const ANIMATION_BASE_RUNTIME: float = 300.0
 
@@ -34,13 +32,3 @@ func lose() -> void:
 	await $CanvasLayer/EndScreen.game_restarted
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-
-
-func _on_spawner_checker_timeout() -> void:
-	var hero_pos: Vector2 = $Hero.global_position
-	for spawner: Spawner in get_tree().get_nodes_in_group("spawners"):
-		var distance: float = (spawner.global_position - hero_pos).length()
-		if distance > proximity_disable and distance < 4000:
-			spawner.enable()
-		else:
-			spawner.disable()

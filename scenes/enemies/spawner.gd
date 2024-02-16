@@ -4,14 +4,34 @@ class_name Spawner extends Marker2D
 var spawning_resource: PoolManager.PoolResource = PoolManager.PoolResource.FLYING_ENEMY
 @export
 var spawning_frequency: float = 2.0
+@export
+var lifetime: float = 1.0
+@export
+var destination: Node2D = null
+@export
+var activator: Area2D = null
 
-func enable():
-	if $SpawningCooldown.is_stopped():
-		$SpawningCooldown.start(1.0/spawning_frequency)
-	
+var velocity: Vector2
+
+func _ready() -> void:
+	disable()
+	if activator != null:
+		activator.body_entered.connect(enable)
+
+func _process(delta: float) -> void:
+	position += velocity*delta
+
+func enable(_by_who = null):
+	OnScreenTerminal.log("enabled")
+	$SpawningCooldown.start(1.0/spawning_frequency)
+	if lifetime > 0:
+		$Lifetime.start(lifetime)
+	velocity = Vector2.ZERO if destination == null else (destination.global_position - global_position)/lifetime
+	set_process(true)
+
 func disable():
-	if not $SpawningCooldown.is_stopped():
-		$SpawningCooldown.stop()
+	$SpawningCooldown.stop()
+	set_process(false)
 
 func spawn():
 	var instance: Node2D = PoolManager.get_instance(spawning_resource)
@@ -19,4 +39,5 @@ func spawn():
 	instance.global_position = global_position
 	
 
-
+func _on_activator_body_entered(_body: Node2D) -> void:
+	enable()

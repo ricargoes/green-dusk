@@ -9,7 +9,7 @@ const POWERUPS = {
 	'Pistol': {
 		'type': PowerUpType.Weapon,
 		'description': 'Basic but reliable weapon, shoots bullets one at a time',
-		'icon': preload("res://resources/icon.svg"),
+		'icon': preload("res://resources/sprites/pj/pjArmGun.png"),
 		'scene': preload("res://scenes/powerups/shotgun.tscn")
 	},
 	'Sword and shield': {
@@ -21,13 +21,13 @@ const POWERUPS = {
 	'Boomerang': {
 		'type': PowerUpType.Weapon,
 		'description': 'Goes back and forth in a straigh line',
-		'icon': preload("res://resources/icon.svg"),
+		'icon': preload("res://resources/sprites/weapons/boomerang.png"),
 		'scene': preload("res://scenes/powerups/boomerang.tscn")
 	},
 	'Shotgun': {
 		'type': PowerUpType.Weapon,
 		'description': 'Blast in a wide arc to the nearest enemy',
-		'icon': preload("res://resources/icon.svg"),
+		'icon': preload("res://resources/sprites/weapons/escopeta.png"),
 		'scene': preload("res://scenes/powerups/shotgun.tscn")
 	},
 	'Rocket launcher': {
@@ -45,8 +45,8 @@ const POWERUPS = {
 	'Antiair bird': {
 		'type': PowerUpType.Weapon,
 		'description': 'Target airborne enermies and make them bit the dust',
-		'icon': preload("res://resources/icon.svg"),
-		'scene': preload("res://scenes/powerups/shotgun.tscn")
+		'icon': preload("res://resources/sprites/weapons/antiaereo1.png"),
+		'scene': preload("res://scenes/powerups/antiair_bird.tscn")
 	},
 	'Hollow point shells': {
 		'type': PowerUpType.Passive,
