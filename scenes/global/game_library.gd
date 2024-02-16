@@ -48,11 +48,6 @@ const POWERUPS = {
 		'icon': preload("res://resources/sprites/weapons/antiaereo1.png"),
 		'scene': preload("res://scenes/powerups/antiair_bird.tscn")
 	},
-	'Hollow point shells': {
-		'type': PowerUpType.Passive,
-		'description': 'Your bullets shatter on impact, throwing flak to other enemies.',
-		'icon': preload("res://resources/icon.svg")
-	},
 	'Armor': {
 		'type': PowerUpType.Passive,
 		'description': 'Make yourself harder to kill: HP boost.',

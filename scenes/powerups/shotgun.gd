@@ -33,3 +33,6 @@ func aim_to(location: Vector2, delta: float):
 	var target_orientation = global_position.angle_to_point(location)
 	var rotation_strength = fmod(target_orientation-rotation, PI)/PI
 	rotation += rotation_strength*rotation_speed*delta
+
+func cooldown_boost(boost: float):
+	$Cooldown.wait_time = cooldown_time/boost

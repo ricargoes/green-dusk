@@ -41,7 +41,7 @@ _data = {
 "pacing": SubResource("Animation_qy8v3")
 }
 
-[node name="Shotgun" type="Sprite2D"]
+[node name="Shotgun" type="Sprite2D" groups=["weapon"]]
 texture = ExtResource("1_1u61a")
 offset = Vector2(35, 7)
 script = ExtResource("2_6cpp8")

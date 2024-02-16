@@ -50,7 +50,7 @@ _data = {
 "attack": SubResource("Animation_vh32b")
 }
 
-[node name="AntiairBird" type="Area2D"]
+[node name="AntiairBird" type="Area2D" groups=["weapon"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_03gty")

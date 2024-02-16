@@ -36,3 +36,6 @@ func attack():
 func _on_attack_move_animation_finished(_anim_name: StringName) -> void:
 	for enemy: Enemy in get_overlapping_bodies():
 		enemy.hurt(damage)
+
+func cooldown_boost(boost: float):
+	$Cooldown.wait_time = cooldown_time/boost
