@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://de4ij3b8tp2ot"]
+
+[ext_resource type="Script" path="res://scenes/powerups/antiair_bird.gd" id="1_03gty"]
+[ext_resource type="Texture2D" uid="uid://cdfgex5hopune" path="res://resources/sprites/weapons/antiaereo1.png" id="2_spox1"]
+[ext_resource type="Texture2D" uid="uid://gn7d1x61o3vs" path="res://resources/sprites/weapons/antiaereo2.png" id="3_fl5oi"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_jq3sg"]
+frames = 2
+frame_0/texture = ExtResource("2_spox1")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("3_fl5oi")
+frame_1/duration = 0.3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m0bff"]
+radius = 19.0263
+
+[sub_resource type="Animation" id="Animation_pyqcy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vh32b"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e6ckt"]
+_data = {
+"RESET": SubResource("Animation_pyqcy"),
+"attack": SubResource("Animation_vh32b")
+}
+
+[node name="AntiairBird" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_03gty")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AnimatedTexture_jq3sg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m0bff")
+
+[node name="AttackMove" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e6ckt")
+}
+speed_scale = 2.0
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="AttackMove" to="." method="_on_attack_move_animation_finished"]
+[connection signal="timeout" from="Cooldown" to="." method="attack"]

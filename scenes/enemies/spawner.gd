@@ -1,7 +1,7 @@
 class_name Spawner extends Marker2D
 
 @export
-var spawning_resource: PoolManager.PoolResource = PoolManager.PoolResource.BASIC_ENEMY
+var spawning_resource: PoolManager.PoolResource = PoolManager.PoolResource.FLYING_ENEMY
 @export
 var spawning_frequency: float = 2.0
 

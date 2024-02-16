@@ -79,7 +79,7 @@ proximity_disable = 1
 [node name="Spawners" type="Node2D" parent="."]
 
 [node name="Spawner" parent="Spawners" instance=ExtResource("2_jktu5")]
-position = Vector2(1300, 500)
+position = Vector2(2101, 500)
 spawning_frequency = 1.0
 
 [node name="Enermies" type="Node2D" parent="."]

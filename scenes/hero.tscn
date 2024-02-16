@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://f31q7ameb6hm"]
+[gd_scene load_steps=20 format=3 uid="uid://f31q7ameb6hm"]
 
 [ext_resource type="Script" path="res://scenes/hero.gd" id="1_omy4t"]
 [ext_resource type="Texture2D" uid="uid://cipplrmttgmy4" path="res://resources/sprites/pj/pjHead.png" id="2_3f0u1"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cdxbhwtpcrqwx" path="res://scenes/level_up_screen.tscn" id="7_y4fjo"]
 [ext_resource type="Texture2D" uid="uid://e7iq4rrlcxb8" path="res://resources/sprites/pj/pjArmSword.png" id="8_8jdhp"]
 [ext_resource type="Texture2D" uid="uid://clgvcank1n2xd" path="res://resources/sprites/pj/pjArmGun.png" id="8_cuksm"]
+[ext_resource type="PackedScene" uid="uid://de4ij3b8tp2ot" path="res://scenes/powerups/antiair_bird.tscn" id="15_2d218"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldks5"]
 animations = [{
@@ -62,7 +63,7 @@ size = Vector2(76, 168)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lk7si"]
 size = Vector2(53, 137)
 
-[node name="Hero" type="CharacterBody2D"]
+[node name="Hero" type="CharacterBody2D" groups=["hero"]]
 collision_mask = 4
 floor_stop_on_slope = false
 script = ExtResource("1_omy4t")
@@ -130,5 +131,7 @@ visible = false
 [node name="ShootingCooldown" type="Timer" parent="."]
 wait_time = 0.3
 autostart = true
+
+[node name="AntiairBird" parent="." instance=ExtResource("15_2d218")]
 
 [connection signal="timeout" from="ShootingCooldown" to="." method="shoot"]

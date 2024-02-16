@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://biq6mnefrwx4"]
+
+[ext_resource type="PackedScene" uid="uid://csfarad5ilhw6" path="res://scenes/enemies/enermy.tscn" id="1_5b1bj"]
+[ext_resource type="Script" path="res://scenes/enemies/flying_enemy.gd" id="2_vyr0w"]
+
+[node name="FlyingEnemy" groups=["airborne"] instance=ExtResource("1_5b1bj")]
+script = ExtResource("2_vyr0w")
+wander_upper_limit = 200.0
+wander_lower_limit = 500.0
+wander_speed = Vector2(-300, 200)
+attack_speed = 300.0
+attack_range = 500
+
+[node name="Sprite2D" parent="." index="0"]
+self_modulate = Color(1, 0.541176, 0, 1)

@@ -16,13 +16,13 @@ const POWERUPS = {
 		'type': PowerUpType.Weapon,
 		'description': 'Slash nearby enermies while an orbiting shield protects you',
 		'icon': preload("res://resources/icon.svg"),
-		'scene': preload("res://scenes/powerups/shotgun.tscn")
+		'scene': preload("res://scenes/powerups/boomerang.tscn")
 	},
 	'Boomerang': {
 		'type': PowerUpType.Weapon,
 		'description': 'Goes back and forth in a straigh line',
 		'icon': preload("res://resources/icon.svg"),
-		'scene': preload("res://scenes/powerups/shotgun.tscn")
+		'scene': preload("res://scenes/powerups/boomerang.tscn")
 	},
 	'Shotgun': {
 		'type': PowerUpType.Weapon,
