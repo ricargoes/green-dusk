@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://dfg2gs8kx1te8"]
 
 [ext_resource type="PackedScene" uid="uid://ccld1bpjx1tau" path="res://scenes/terrain/terrain_chunk_base.tscn" id="1_vs7ef"]
-[ext_resource type="PackedScene" uid="uid://csfarad5ilhw6" path="res://scenes/enemies/enermy.tscn" id="2_5ghyk"]
 [ext_resource type="PackedScene" uid="uid://bqlyqc1ygoqus" path="res://scenes/enemies/spawner.tscn" id="3_eakqu"]
+[ext_resource type="PackedScene" uid="uid://cv5x51jwgqxsq" path="res://scenes/enemies/basic_enemy.tscn" id="3_fab3p"]
 [ext_resource type="PackedScene" uid="uid://bu35il1yoex0l" path="res://scenes/activador.tscn" id="4_jtunb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8syfu"]
@@ -34,24 +34,33 @@ metadata/_edit_lock_ = true
 [node name="Enemies" parent="." index="1"]
 metadata/_edit_lock_ = true
 
-[node name="Enermy" parent="Enemies" index="0" instance=ExtResource("2_5ghyk")]
-position = Vector2(909, 576)
-
-[node name="Enermy2" parent="Enemies" index="1" instance=ExtResource("2_5ghyk")]
-position = Vector2(1194, 533)
-
-[node name="Spawner1" parent="Enemies" index="2" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+[node name="Spawner1" parent="Enemies" index="0" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
 position = Vector2(3575, 81)
 spawning_frequency = 4.0
 destination = NodePath("../../Helpers/Dest1")
 activator = NodePath("../../Helpers/Activator")
 
-[node name="Spawner2" parent="Enemies" index="3" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+[node name="Spawner2" parent="Enemies" index="1" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
 position = Vector2(4326, 327)
 spawning_resource = 1
 spawning_frequency = 4.0
 destination = NodePath("../../Helpers/Dest2")
 activator = NodePath("../../Helpers/Activator")
+
+[node name="BasicEnemy" parent="Enemies" index="2" instance=ExtResource("3_fab3p")]
+position = Vector2(996, 589)
+
+[node name="BasicEnemy2" parent="Enemies" index="3" instance=ExtResource("3_fab3p")]
+position = Vector2(1147, 582)
+
+[node name="BasicEnemy3" parent="Enemies" index="4" instance=ExtResource("3_fab3p")]
+position = Vector2(1534, 589)
+
+[node name="BasicEnemy4" parent="Enemies" index="5" instance=ExtResource("3_fab3p")]
+position = Vector2(1413, 589)
+
+[node name="BasicEnemy5" parent="Enemies" index="6" instance=ExtResource("3_fab3p")]
+position = Vector2(1278, 589)
 
 [node name="Helpers" parent="." index="2"]
 metadata/_edit_lock_ = true

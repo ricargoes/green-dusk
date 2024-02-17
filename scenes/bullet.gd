@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-const BULLET_LIFETIME: float = 1
 
 var resource_type = PoolManager.PoolResource.BULLET
 @export
@@ -9,6 +8,8 @@ var is_player: bool = false
 var orientation: float = 0.0
 @export
 var bullet_speed: float = 1000
+@export
+var bullet_lifetime: float = 1
 @export
 var damage: float = 10.0
 
@@ -23,7 +24,9 @@ func _enter_tree():
 	
 	velocity = Vector2.from_angle(orientation)*bullet_speed
 	rotation = orientation
-	time_left = BULLET_LIFETIME
+	time_left = bullet_lifetime
+	
+	OnScreenTerminal.log(time_left)
 
 func _process(delta: float) -> void:
 	var collision = move_and_collide(velocity*delta)

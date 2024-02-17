@@ -51,25 +51,25 @@ const POWERUPS = {
 	'Armor': {
 		'type': PowerUpType.Passive,
 		'description': 'Make yourself harder to kill: HP boost.',
-		'icon': preload("res://resources/icon.svg"),
+		'icon': preload("res://resources/ui/icons/armour.png"),
 		'levels': {1: 20, 2: 20, 3: 30, 4: 30, 5: 50}
 	},
 	"Invisibility cloak": {
 		'type': PowerUpType.Passive,
 		'description': 'Your father left it to you. You are harder to see and enemies tend to fail to hit you.',
-		'icon': preload("res://resources/icon.svg"),
+		'icon': preload("res://resources/ui/icons/cloak.png"),
 		'levels': {1: 5, 2: 15, 3: 25, 4: 35, 5: 50}
 	},
 	'Bad coffee': {
 		'type': PowerUpType.Passive,
 		'description': 'Your are getting nervous rather than alert. Well, everything helps. Reduces cooldowns.',
-		'icon': preload("res://resources/icon.svg"),
+		'icon': preload("res://resources/ui/icons/badCoffee.png"),
 		'levels': {1: 10, 2: 30, 3: 60, 4: 100, 5: 150}
 	},
 	'Dark Necrogrimoire': {
 		'type': PowerUpType.Passive,
 		'description': 'Suck the life out of your enermies and onto you. Gross but gets you life steal.',
-		'icon': preload("res://resources/icon.svg"),
+		'icon': preload("res://resources/ui/icons/necrogrimorio.png"),
 		'levels': {1: 5, 2: 10, 3: 20, 4: 30, 5: 50}
 	},
 }
