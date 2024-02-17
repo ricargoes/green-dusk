@@ -5,6 +5,8 @@ var rotation_speed = 2*PI
 @export
 var cooldown_time: float = 0.5
 
+var level = 1
+
 func _ready() -> void:
 	$Cooldown.wait_time = cooldown_time
 
@@ -36,3 +38,11 @@ func aim_to(location: Vector2, delta: float):
 
 func cooldown_boost(boost: float):
 	$Cooldown.wait_time = cooldown_time/boost
+
+func set_level(new_level: int):
+	level = new_level
+	match level:
+		1:
+			rotation_speed = 2*PI
+			cooldown_time = 0.5
+		

@@ -42,3 +42,12 @@ shape = SubResource("RectangleShape2D_cnuek")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitboxes" index="2"]
 polygon = PackedVector2Array(1, 694, 239, 712, 549, 771, 924, 865, 1252, 856, 1501, 887, 1680, 885, 1678, 1074, -1, 1083)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hitboxes" index="3"]
+polygon = PackedVector2Array(4783, 699, 4775, 1075, 7034, 1083, 6974, 757, 7159, 578, 7193, 521, 7174, 485, 6971, 523, 6808, 582, 6232, 656, 6056, 699, 5412, 699)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Hitboxes" index="4"]
+polygon = PackedVector2Array(11518, 697, 11519, 1080, 7619, 1071, 7624, 878, 9405, 882, 9666, 836, 10073, 817, 10405, 745, 10526, 698)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Hitboxes" index="5"]
+polygon = PackedVector2Array(10419, 457, 10425, 387, 9985, 385, 9873, 367, 9730, 376, 9622, 396, 9530, 441, 9177, 560, 9175, 601, 9238, 592, 9337, 551, 9527, 509, 9770, 435, 9941, 446, 10017, 464, 10223, 464, 10338, 457)

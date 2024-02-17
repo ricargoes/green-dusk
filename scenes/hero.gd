@@ -5,13 +5,11 @@ const MAX_JUMP_IMPULSE_TIME: float = 0.3
 
 @export
 var player_speed: int = 200
-@export
-var shooting_cooldown: float = 0.3
-@export
-var arm_rotation_speed: float = 4*PI
 
 @export
 var max_life_points: int = 50
+@export 
+var life_boost: float = 0.0
 @export
 var evasion: int = 0
 @export
@@ -24,17 +22,16 @@ var level: int = 0
 var xp: int = 0
 var xp_threshold: int = 100
 var powerups = { "Pistol": 1 }
+var enemies_slain: int = 0
 
 var jump_impulse_time: float = 0.0
-
-var pistol_target: Enemy = null
 
 signal died
 
 func _ready() -> void:
-	$ShootingCooldown.wait_time = shooting_cooldown
-	life_points = max_life_points/2.0
-	$UI.sync_life(life_points, max_life_points)
+	life_points = max_life_points + life_boost
+	$UI.sync_life(life_points, max_life_points + life_boost)
+	$UI.sync_xp(xp, xp_threshold)
 	level_up()
 
 func _process(delta: float) -> void:
@@ -61,44 +58,23 @@ func _process(delta: float) -> void:
 	if global_position.y > GameConstants.DEATH_GLOBAL_Y_POSITION:
 		hurt(1000)
 	
-	if pistol_target == null or pistol_target.dead:
-		select_target()
-	
-	var target_orientation = $ShoulderPivot.global_position.angle_to_point(pistol_target.global_position) if pistol_target != null else 0
-	aim_to(target_orientation, delta)
-
 func hurt(damage: float):
 	if randi() % 100 <= evasion:
 		return
 	life_points -= damage
-	$UI.sync_life(life_points, max_life_points)
+	$UI.sync_life(life_points, max_life_points + life_boost)
 	if life_points <= 0:
 		die()
 
 func die():
 	died.emit()
 
-func shoot():
-	var orientation = $ShoulderPivot.rotation
-	var game = get_tree().current_scene
-	game.spawn_bullet($ShoulderPivot.global_position + Vector2.from_angle(orientation)*120, orientation, true)
-
-func select_target():
-	pistol_target = null
-	var pistol_range = 1000
-	for enemy: Node2D in get_tree().get_nodes_in_group("enemies"):
-		if (enemy.global_position - global_position).length() < pistol_range:
-			pistol_target = enemy
-
-func aim_to(target_orientation: float, delta: float):
-	var rotation_strength = fmod(target_orientation-$ShoulderPivot.rotation, PI)/PI
-	$ShoulderPivot.rotation += rotation_strength*arm_rotation_speed*delta
-
 func get_xp(amount: int):
 	xp += amount
 	if(xp >= xp_threshold):
 		xp -= xp_threshold
 		await level_up()
+	$UI.sync_xp(xp, xp_threshold)
 	get_tree().paused = false
 
 func level_up():
@@ -113,32 +89,38 @@ func level_up():
 func equip_powerup(powerup_name: String):
 	var powerup = GameLibrary.POWERUPS[powerup_name]
 	if not powerups.has(powerup_name):
-		powerups[powerup_name] = 1
-		if powerup["type"] == GameLibrary.PowerUpType.Weapon:
-			var weapon_instance = powerup.scene.instantiate()
-			add_child(weapon_instance)
-	else:
-		powerups[powerup_name] += 1
+		powerups[powerup_name] = 0
+		
+	powerups[powerup_name] += 1
 	
 	if powerup["type"] == GameLibrary.PowerUpType.Passive:
+		var boost_value = powerup['levels'][powerups[powerup_name]]
 		match powerup_name:
 			'Armor':
-				max_life_points += 20
+				life_boost = boost_value
 				life_points += 20
-				$UI.sync_life(life_points, max_life_points)
+				$UI.sync_life(life_points, max_life_points + life_boost)
 			"Invisibility cloak":
-				evasion += 5
+				evasion = boost_value
 			'Bad coffee':
-				attack_frecuency_boost += 0.2
-				get_tree().call_group("weapos", "cooldown_boost", attack_frecuency_boost)
-				$ShootingCooldown.wait_time = shooting_cooldown/attack_frecuency_boost
+				attack_frecuency_boost = boost_value/100.0
+				get_tree().call_group("weapons", "cooldown_boost", attack_frecuency_boost)
 			'Dark Necrogrimoire':
-				life_steal += 0.05
+				life_steal = boost_value/100.0
+	elif powerup["type"] == GameLibrary.PowerUpType.Weapon:
+		if powerups[powerup_name] == 1:
+			var weapon_instance = powerup.scene.instantiate()
+			weapon_instance.name = powerup_name
+			add_child(weapon_instance)
+		
+		get_node(powerup_name).set_level(powerups[powerup_name])
+	%Summary.sync_powerups(powerups)
 
 func steal_life(damage: float):
 	var life_stealed = life_steal*damage
 	life_points = min(max_life_points, life_points+life_stealed)
 	$UI.sync_life(life_points, max_life_points)
 
-func _on_enermy_defeated(who: Variant) -> void:
-	get_xp(who.xp_value)
+func on_enermy_defeated(enermy: Enemy) -> void:
+	get_xp(enermy.xp_value)
+	enemies_slain += 1

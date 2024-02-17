@@ -1,9 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://biq6mnefrwx4"]
+[gd_scene load_steps=7 format=3 uid="uid://biq6mnefrwx4"]
 
 [ext_resource type="PackedScene" uid="uid://csfarad5ilhw6" path="res://scenes/enemies/enermy.tscn" id="1_5b1bj"]
 [ext_resource type="Script" path="res://scenes/enemies/flying_enemy.gd" id="2_vyr0w"]
+[ext_resource type="Texture2D" uid="uid://cu1u2t25ie5vd" path="res://resources/sprites/enemies/volador1.png" id="3_evfhe"]
+[ext_resource type="Texture2D" uid="uid://djejdopq0krqd" path="res://resources/sprites/enemies/volador2.png" id="4_8r5qn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qcni8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_evfhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8r5qn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25rpp"]
+size = Vector2(84, 78)
 
 [node name="FlyingEnemy" groups=["airborne"] instance=ExtResource("1_5b1bj")]
+collision_mask = 0
 script = ExtResource("2_vyr0w")
 wander_upper_limit = 200.0
 wander_lower_limit = 500.0
@@ -13,3 +33,8 @@ attack_range = 500
 
 [node name="Sprite2D" parent="." index="0"]
 self_modulate = Color(1, 0.541176, 0, 1)
+sprite_frames = SubResource("SpriteFrames_qcni8")
+autoplay = "default"
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_25rpp")

@@ -39,3 +39,10 @@ func _on_attack_move_animation_finished(_anim_name: StringName) -> void:
 
 func cooldown_boost(boost: float):
 	$Cooldown.wait_time = cooldown_time/boost
+
+func set_level(level: int):
+	match level:
+		1:
+			speed = 900
+			damage = 24.0
+			cooldown_time = 1.0

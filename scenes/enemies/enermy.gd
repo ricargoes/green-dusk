@@ -15,6 +15,10 @@ var life_points = 1
 
 signal defeated(who)
 
+func _ready() -> void:
+	var hero = get_tree().get_first_node_in_group("hero")
+	defeated.connect(hero.on_enermy_defeated)
+
 func _enter_tree():
 	life_points = max_life_points
 	dead = false

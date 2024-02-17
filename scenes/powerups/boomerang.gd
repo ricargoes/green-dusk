@@ -25,3 +25,11 @@ func _process(delta: float) -> void:
 
 func cooldown_boost(boost: float):
 	speed_boost = boost
+
+func set_level(level: int):
+	match level:
+		1:
+			pos_left = Vector2(-800, 0)
+			pos_right = Vector2(800, 0)
+			dps = 30.0
+			speed = 900

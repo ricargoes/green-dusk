@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8qbjfx63idyx"]
+
+[ext_resource type="Script" path="res://scenes/pistol.gd" id="1_cvxao"]
+[ext_resource type="Texture2D" uid="uid://clgvcank1n2xd" path="res://resources/sprites/pj/pjArmGun.png" id="2_fsjh2"]
+
+[node name="Pistol" type="Node2D" groups=["weapon"]]
+position = Vector2(0, -27)
+script = ExtResource("1_cvxao")
+
+[node name="PistolArm" type="Sprite2D" parent="."]
+texture = ExtResource("2_fsjh2")
+offset = Vector2(0, 27)
+
+[node name="ShootingCooldown" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="ShootingCooldown" to="." method="shoot"]

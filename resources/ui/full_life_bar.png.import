@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b58k1lvplemds"
-path="res://.godot/imported/full_fuel_bar.png-7d49b4e05bba3587dd57840f796485f2.ctex"
+uid="uid://bdexcucrlyfrt"
+path="res://.godot/imported/full_life_bar.png-34d3d1a6b7941e5cec1a8c673b2bbfc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/ui/full_fuel_bar.png"
-dest_files=["res://.godot/imported/full_fuel_bar.png-7d49b4e05bba3587dd57840f796485f2.ctex"]
+source_file="res://resources/ui/full_life_bar.png"
+dest_files=["res://.godot/imported/full_life_bar.png-34d3d1a6b7941e5cec1a8c673b2bbfc0.ctex"]
 
 [params]
 
