@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 	position += velocity*delta
 
 func enable(_by_who = null):
-	OnScreenTerminal.log("enabled")
 	$SpawningCooldown.start(1.0/spawning_frequency)
 	if lifetime > 0:
 		$Lifetime.start(lifetime)
@@ -35,7 +34,7 @@ func disable():
 
 func spawn():
 	var instance: Node2D = PoolManager.get_instance(spawning_resource)
-	add_child(instance)
+	get_parent().add_child(instance)
 	instance.global_position = global_position
 	
 

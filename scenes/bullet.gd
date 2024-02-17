@@ -22,6 +22,7 @@ func _enter_tree():
 		collision_mask += 1
 	
 	velocity = Vector2.from_angle(orientation)*bullet_speed
+	rotation = orientation
 	time_left = BULLET_LIFETIME
 
 func _process(delta: float) -> void:

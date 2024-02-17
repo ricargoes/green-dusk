@@ -1,15 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwl37y77358r2"]
+[gd_scene load_steps=9 format=3 uid="uid://dwl37y77358r2"]
 
 [ext_resource type="PackedScene" uid="uid://f31q7ameb6hm" path="res://scenes/hero.tscn" id="1_2n3he"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_17qkh"]
-[ext_resource type="Texture2D" uid="uid://5rou5wm7frds" path="res://resources/icon.svg" id="1_hu7ex"]
-[ext_resource type="PackedScene" uid="uid://bqlyqc1ygoqus" path="res://scenes/enemies/spawner.tscn" id="2_jktu5"]
-[ext_resource type="PackedScene" uid="uid://csfarad5ilhw6" path="res://scenes/enemies/enermy.tscn" id="3_i8n50"]
-[ext_resource type="PackedScene" uid="uid://bu35il1yoex0l" path="res://scenes/activador.tscn" id="3_winff"]
+[ext_resource type="PackedScene" uid="uid://dfg2gs8kx1te8" path="res://scenes/terrain/terrain_chunk_1.tscn" id="2_kfbcc"]
+[ext_resource type="Texture2D" uid="uid://cdq2ghbi8fy0l" path="res://resources/sprites/Environment/Sol.png" id="4_g6on4"]
 [ext_resource type="PackedScene" uid="uid://df4mxycb4gc4m" path="res://scenes/end_screen.tscn" id="5_52ho5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7e0y"]
-size = Vector2(127.778, 128)
 
 [sub_resource type="Animation" id="Animation_xw7t4"]
 length = 0.001
@@ -74,48 +69,15 @@ _data = {
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_17qkh")
-run_time = 10.0
+run_time = 30.0
 
-[node name="Spawners" type="Node2D" parent="."]
+[node name="Terrain" type="Node2D" parent="."]
 
-[node name="Spawner" parent="Spawners" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("2_jktu5")]
-position = Vector2(2101, 500)
-spawning_frequency = 3.0
-lifetime = 2.0
-destination = NodePath("../../Helpers/Marker2D")
-activator = NodePath("../../Helpers/Activator")
-
-[node name="Helpers" type="Node2D" parent="."]
-
-[node name="Marker2D" type="Marker2D" parent="Helpers"]
-position = Vector2(1500, 200)
-
-[node name="Activator" parent="Helpers" instance=ExtResource("3_winff")]
-position = Vector2(964, 465)
-
-[node name="Enermies" type="Node2D" parent="."]
-
-[node name="Enermy" parent="Enermies" instance=ExtResource("3_i8n50")]
-position = Vector2(1073, 521)
-
-[node name="Enermy2" parent="Enermies" instance=ExtResource("3_i8n50")]
-position = Vector2(1207, 563)
+[node name="TerrainChunk1" parent="Terrain" instance=ExtResource("2_kfbcc")]
 
 [node name="Hero" parent="." instance=ExtResource("1_2n3he")]
-position = Vector2(250, 641)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(1500, 783)
-scale = Vector2(20, 1)
-collision_layer = 4
-collision_mask = 3
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_hu7ex")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_y7e0y")
+position = Vector2(250, 593)
+player_speed = 500
 
 [node name="Bullets" type="Node2D" parent="."]
 
@@ -133,7 +95,7 @@ motion_scale = Vector2(0, 0)
 
 [node name="Sun" type="Sprite2D" parent="ParallaxBackground/Infinity"]
 position = Vector2(883, 281)
-texture = ExtResource("1_hu7ex")
+texture = ExtResource("4_g6on4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -151,7 +113,5 @@ visible = false
 
 [node name="SunsetTime" type="Timer" parent="."]
 
-[connection signal="defeated" from="Enermies/Enermy" to="Hero" method="_on_enermy_defeated"]
-[connection signal="defeated" from="Enermies/Enermy2" to="Hero" method="_on_enermy_defeated"]
 [connection signal="died" from="Hero" to="." method="lose"]
 [connection signal="timeout" from="SunsetTime" to="." method="win"]

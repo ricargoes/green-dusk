@@ -4,10 +4,23 @@ extends Node2D
 var run_time: float = 300.0
 
 const ANIMATION_BASE_RUNTIME: float = 300.0
+const TERRAINS_SCENES = [
+	preload("res://scenes/terrain/terrain_chunk_1.tscn"),
+	preload("res://scenes/terrain/terrain_chunk_2.tscn"),
+]
+var last_terrain_position := Vector2.ZERO
 
 func _ready() -> void:
 	$SunsetAnimator.speed_scale = ANIMATION_BASE_RUNTIME/run_time
 	$SunsetTime.start(run_time)
+
+func _process(_delta: float) -> void:
+	if $Hero.position > last_terrain_position:
+		var terrain = TERRAINS_SCENES[randi() % TERRAINS_SCENES.size()].instantiate()
+		last_terrain_position += Vector2(6*1920, 0)
+		terrain.position = last_terrain_position
+		$Terrain.add_child(terrain)
+		OnScreenTerminal.log(last_terrain_position)
 	
 
 func spawn_bullet(starting_position: Vector2, orientation: float, is_player: bool):

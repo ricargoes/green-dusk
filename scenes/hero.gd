@@ -8,7 +8,7 @@ var player_speed: int = 200
 @export
 var shooting_cooldown: float = 0.3
 @export
-var arm_rotation_speed: float = 2*PI
+var arm_rotation_speed: float = 4*PI
 
 @export
 var max_life_points: int = 50
@@ -34,11 +34,11 @@ signal died
 func _ready() -> void:
 	$ShootingCooldown.wait_time = shooting_cooldown
 	life_points = max_life_points/2.0
-	velocity.x = player_speed
 	$UI.sync_life(life_points, max_life_points)
 	level_up()
 
 func _process(delta: float) -> void:
+	velocity.x = player_speed
 	if is_on_floor():
 		$Body.animation = "run"
 		$Legs.animation = "run"
@@ -63,8 +63,9 @@ func _process(delta: float) -> void:
 	
 	if pistol_target == null or pistol_target.dead:
 		select_target()
-	var where = pistol_target.global_position if pistol_target != null else Vector2.RIGHT
-	aim_to(where, delta)
+	
+	var target_orientation = $ShoulderPivot.global_position.angle_to_point(pistol_target.global_position) if pistol_target != null else 0
+	aim_to(target_orientation, delta)
 
 func hurt(damage: float):
 	if randi() % 100 <= evasion:
@@ -89,8 +90,7 @@ func select_target():
 		if (enemy.global_position - global_position).length() < pistol_range:
 			pistol_target = enemy
 
-func aim_to(location: Vector2, delta: float):
-	var target_orientation = $ShoulderPivot.global_position.angle_to_point(location)
+func aim_to(target_orientation: float, delta: float):
 	var rotation_strength = fmod(target_orientation-$ShoulderPivot.rotation, PI)/PI
 	$ShoulderPivot.rotation += rotation_strength*arm_rotation_speed*delta
 

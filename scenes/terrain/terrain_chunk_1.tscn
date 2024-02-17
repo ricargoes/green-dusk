@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfg2gs8kx1te8"]
+
+[ext_resource type="PackedScene" uid="uid://ccld1bpjx1tau" path="res://scenes/terrain/terrain_chunk_base.tscn" id="1_vs7ef"]
+[ext_resource type="PackedScene" uid="uid://csfarad5ilhw6" path="res://scenes/enemies/enermy.tscn" id="2_5ghyk"]
+[ext_resource type="PackedScene" uid="uid://bqlyqc1ygoqus" path="res://scenes/enemies/spawner.tscn" id="3_eakqu"]
+[ext_resource type="PackedScene" uid="uid://bu35il1yoex0l" path="res://scenes/activador.tscn" id="4_jtunb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8syfu"]
+size = Vector2(1791, 391)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_126an"]
+size = Vector2(1830.5, 205)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujcj7"]
+size = Vector2(1168.5, 548.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1bhk"]
+size = Vector2(1330, 395)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epfme"]
+size = Vector2(2417, 184)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqghx"]
+size = Vector2(635, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4668"]
+size = Vector2(1054.5, 49.5)
+
+[node name="TerrainChunk1" instance=ExtResource("1_vs7ef")]
+
+[node name="Sprite2D" parent="." index="0"]
+metadata/_edit_lock_ = true
+
+[node name="Enemies" parent="." index="1"]
+metadata/_edit_lock_ = true
+
+[node name="Enermy" parent="Enemies" index="0" instance=ExtResource("2_5ghyk")]
+position = Vector2(909, 576)
+
+[node name="Enermy2" parent="Enemies" index="1" instance=ExtResource("2_5ghyk")]
+position = Vector2(1194, 533)
+
+[node name="Spawner1" parent="Enemies" index="2" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+position = Vector2(3575, 81)
+spawning_frequency = 4.0
+destination = NodePath("../../Helpers/Dest1")
+activator = NodePath("../../Helpers/Activator")
+
+[node name="Spawner2" parent="Enemies" index="3" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+position = Vector2(4326, 327)
+spawning_resource = 1
+spawning_frequency = 4.0
+destination = NodePath("../../Helpers/Dest2")
+activator = NodePath("../../Helpers/Activator")
+
+[node name="Helpers" parent="." index="2"]
+metadata/_edit_lock_ = true
+
+[node name="Dest1" type="Marker2D" parent="Helpers" index="0"]
+position = Vector2(3594, 795)
+
+[node name="Dest2" type="Marker2D" parent="Helpers" index="1"]
+position = Vector2(5327, 311)
+
+[node name="Activator" parent="Helpers" index="2" instance=ExtResource("4_jtunb")]
+position = Vector2(1834, 428)
+
+[node name="Hitboxes" parent="." index="3"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes" index="0"]
+position = Vector2(900, 887)
+shape = SubResource("RectangleShape2D_8syfu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitboxes" index="1"]
+position = Vector2(2979.75, 978.5)
+shape = SubResource("RectangleShape2D_126an")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitboxes" index="2"]
+position = Vector2(4817.5, 816.25)
+shape = SubResource("RectangleShape2D_ujcj7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Hitboxes" index="3"]
+position = Vector2(6069, 892.5)
+shape = SubResource("RectangleShape2D_t1bhk")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Hitboxes" index="4"]
+position = Vector2(8371.5, 790)
+shape = SubResource("RectangleShape2D_epfme")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Hitboxes" index="5"]
+position = Vector2(6114, 393.5)
+shape = SubResource("RectangleShape2D_lqghx")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Hitboxes" index="6"]
+position = Vector2(2273.5, 391.5)
+shape = SubResource("RectangleShape2D_lqghx")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Hitboxes" index="7"]
+position = Vector2(9566.75, 403.25)
+shape = SubResource("RectangleShape2D_n4668")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitboxes" index="8"]
+polygon = PackedVector2Array(9841, 883, 10584, 863, 10908, 775, 11298, 708, 11527, 698, 11527, 1051, 9841, 1054)

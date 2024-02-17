@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://mtv0lqcpemh8"]
+
+[ext_resource type="PackedScene" uid="uid://ccld1bpjx1tau" path="res://scenes/terrain/terrain_chunk_base.tscn" id="1_5ax3c"]
+[ext_resource type="Texture2D" uid="uid://cb66ovpwm0xol" path="res://resources/sprites/Environment/Floor/chunk2Floor.png" id="2_ae2gx"]
+[ext_resource type="PackedScene" uid="uid://biq6mnefrwx4" path="res://scenes/enemies/flying_enemy.tscn" id="3_2fiq6"]
+[ext_resource type="PackedScene" uid="uid://bqlyqc1ygoqus" path="res://scenes/enemies/spawner.tscn" id="4_if8s2"]
+[ext_resource type="PackedScene" uid="uid://bu35il1yoex0l" path="res://scenes/activador.tscn" id="5_k5kdl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhndd"]
+size = Vector2(1829.5, 189)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnuek"]
+size = Vector2(713, 46)
+
+[node name="TerrainChunkBase" instance=ExtResource("1_5ax3c")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ae2gx")
+
+[node name="FlyingEnemy" parent="Enemies" index="0" instance=ExtResource("3_2fiq6")]
+position = Vector2(2172, 309)
+
+[node name="Spawner" parent="Enemies" index="1" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("4_if8s2")]
+position = Vector2(2637, 512)
+spawning_resource = 1
+destination = NodePath("../../Helpers/Marker2D")
+activator = NodePath("../../Helpers/Activator")
+
+[node name="Marker2D" type="Marker2D" parent="Helpers" index="0"]
+position = Vector2(4224, 484)
+
+[node name="Activator" parent="Helpers" index="1" instance=ExtResource("5_k5kdl")]
+position = Vector2(1440, 579)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes" index="0"]
+position = Vector2(3434.25, 785.5)
+shape = SubResource("RectangleShape2D_yhndd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitboxes" index="1"]
+position = Vector2(1961.5, 562)
+shape = SubResource("RectangleShape2D_cnuek")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitboxes" index="2"]
+polygon = PackedVector2Array(1, 694, 239, 712, 549, 771, 924, 865, 1252, 856, 1501, 887, 1680, 885, 1678, 1074, -1, 1083)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccld1bpjx1tau"]
+
+[ext_resource type="Texture2D" uid="uid://b8l4d6fjg3w3r" path="res://resources/sprites/Environment/Floor/chunk1Floor.png" id="1_403ec"]
+
+[node name="TerrainChunkBase" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_403ec")
+offset = Vector2(5760, 540)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Helpers" type="Node2D" parent="."]
+
+[node name="Hitboxes" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 7
