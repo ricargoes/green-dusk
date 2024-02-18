@@ -20,8 +20,8 @@ var life_steal: float = 0.0
 var life_points: float = 50.0
 var level: int = 0
 var xp: int = 0
-var xp_threshold: int = 100
-var powerups = { "Pistol": 1, "Sword": 1 }
+var xp_threshold: int = 1
+var powerups = { "Pistol": 1 }
 var enemies_slain: int = 0
 
 var jump_impulse_time: float = 0.0
@@ -79,13 +79,15 @@ func get_xp(amount: int):
 
 func level_up():
 	get_tree().paused = true
-	$UI/LevelUpScreen.pick_powerup(powerups)
-	var powerup = await $UI/LevelUpScreen.powerup_selected
+	var can_levelup = $UI/LevelUpScreen.pick_powerup(powerups)
+	if can_levelup:
+		var powerup = await $UI/LevelUpScreen.powerup_selected
+		level += 1
+		xp_threshold = level*1000
+		if powerup != "":
+			equip_powerup(powerup)
 	get_tree().paused = false
-	level += 1
-	xp_threshold = level*1000
-	if powerup != "":
-		equip_powerup(powerup)
+	
 
 func equip_powerup(powerup_name: String):
 	var powerup = GameLibrary.POWERUPS[powerup_name]

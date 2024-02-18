@@ -16,7 +16,7 @@ const POWERUPS = {
 		'type': PowerUpType.Weapon,
 		'description': 'Slash nearby enermies with a mighty sword.',
 		'icon': preload("res://resources/ui/icons/sword.png"),
-		'scene': preload("res://scenes/powerups/boomerang.tscn")
+		'scene': preload("res://scenes/powerups/sword.tscn")
 	},
 	'Boomerang': {
 		'type': PowerUpType.Weapon,

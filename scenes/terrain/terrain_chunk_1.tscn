@@ -36,7 +36,7 @@ destination = NodePath("../../Helpers/Dest1")
 activator = NodePath("../../Helpers/Activator")
 
 [node name="Spawner2" parent="Enemies" index="1" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
-position = Vector2(4326, 327)
+position = Vector2(7090, 221)
 spawning_resource = 1
 destination = NodePath("../../Helpers/Dest2")
 activator = NodePath("../../Helpers/Activator")
@@ -69,10 +69,10 @@ position = Vector2(64, 543)
 position = Vector2(3711, 753)
 
 [node name="Dest1" type="Marker2D" parent="Helpers" index="0"]
-position = Vector2(3594, 795)
+position = Vector2(5249, 156)
 
 [node name="Dest2" type="Marker2D" parent="Helpers" index="1"]
-position = Vector2(5327, 311)
+position = Vector2(8633, 210)
 
 [node name="Activator" parent="Helpers" index="2" instance=ExtResource("4_jtunb")]
 position = Vector2(1834, 428)

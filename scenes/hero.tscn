@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://f31q7ameb6hm"]
+[gd_scene load_steps=22 format=3 uid="uid://f31q7ameb6hm"]
 
 [ext_resource type="Script" path="res://scenes/hero.gd" id="1_omy4t"]
 [ext_resource type="Texture2D" uid="uid://cipplrmttgmy4" path="res://resources/sprites/pj/pjHead.png" id="2_3f0u1"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://ciownt0dopb4i" path="res://resources/sprites/pj/pjRunningLegs1.png" id="6_ejbq7"]
 [ext_resource type="Texture2D" uid="uid://ced1gvm3ejp8b" path="res://resources/sprites/pj/pjRunningLegs2.png" id="7_34yky"]
 [ext_resource type="PackedScene" uid="uid://cdxbhwtpcrqwx" path="res://scenes/level_up_screen.tscn" id="7_y4fjo"]
-[ext_resource type="PackedScene" uid="uid://be7qt3ldbvjxr" path="res://scenes/powerups/sword.tscn" id="9_hr181"]
 [ext_resource type="PackedScene" uid="uid://c8qbjfx63idyx" path="res://scenes/powerups/pistol.tscn" id="9_jqixl"]
 [ext_resource type="Texture2D" uid="uid://bdexcucrlyfrt" path="res://resources/ui/full_life_bar.png" id="13_axndc"]
 [ext_resource type="Texture2D" uid="uid://cuxvaqlgqpm2c" path="res://resources/ui/full_xp_bar.png" id="14_glpkk"]
@@ -86,10 +85,6 @@ animation = &"jump"
 sprite_frames = SubResource("SpriteFrames_rcvp2")
 animation = &"run"
 autoplay = "run"
-
-[node name="Pistol" parent="." instance=ExtResource("9_jqixl")]
-
-[node name="Sword" parent="." instance=ExtResource("9_hr181")]
 
 [node name="RunningShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
@@ -185,3 +180,5 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSight"]
 shape = SubResource("RectangleShape2D_33dn5")
+
+[node name="Pistol" parent="." instance=ExtResource("9_jqixl")]
