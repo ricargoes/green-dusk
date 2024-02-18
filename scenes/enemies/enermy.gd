@@ -45,6 +45,8 @@ func contact_attack(delta: float):
 			body.hurt(contact_dps*delta)
 
 func hurt(damage: float):
+	if not is_inside_tree():
+		return
 	var hero = get_tree().get_first_node_in_group("hero")
 	hero.steal_life(damage)
 	life_points -= damage

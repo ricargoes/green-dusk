@@ -8,6 +8,8 @@ const TERRAIN_CHUNK_LENGTH: int = 6*1920
 const TERRAINS_SCENES = [
 	preload("res://scenes/terrain/terrain_chunk_1.tscn"),
 	preload("res://scenes/terrain/terrain_chunk_2.tscn"),
+	preload("res://scenes/terrain/terrain_chunk_3.tscn"),
+	preload("res://scenes/terrain/terrain_chunk_4.tscn"),
 ]
 var last_terrain_position := Vector2.ZERO
 

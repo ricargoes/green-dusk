@@ -13,6 +13,8 @@ func _ready() -> void:
 	$Cooldown.wait_time = cooldown_time - 0.5
 
 func _process(delta: float) -> void:
+	if not is_inside_tree():
+		return
 	if target == null or target.dead:
 		var min_distance = null
 		var hero: Node2D = get_tree().get_first_node_in_group("hero")
@@ -20,7 +22,7 @@ func _process(delta: float) -> void:
 			if not enemy.is_in_group("airborne"):
 				continue
 			var distance_squared_to_hero = hero.global_position.distance_squared_to(enemy.global_position)
-			if min_distance != null and distance_squared_to_hero < min_distance:
+			if min_distance == null or distance_squared_to_hero < min_distance:
 				min_distance = distance_squared_to_hero
 				target = enemy
 		if target != null and not target.dead:

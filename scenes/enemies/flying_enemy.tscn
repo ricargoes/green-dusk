@@ -28,7 +28,7 @@ script = ExtResource("2_vyr0w")
 wander_upper_limit = 200.0
 wander_lower_limit = 500.0
 wander_speed = Vector2(-300, 200)
-attack_speed = 600.0
+attack_speed = 500.0
 attack_range = 500
 resource_type = 2
 
