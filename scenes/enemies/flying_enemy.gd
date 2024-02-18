@@ -1,5 +1,7 @@
 extends Enemy
 
+const TOO_CLOSE_RANGE = 100
+
 @export
 var wander_upper_limit: float =  200
 @export
@@ -7,7 +9,7 @@ var wander_lower_limit: float =  500
 @export
 var wander_speed := Vector2(-300, 200)
 @export
-var attack_speed: float = 500
+var attack_speed: float = 550
 @export
 var attack_range: int = 500
 
@@ -21,7 +23,8 @@ func _process(delta: float) -> void:
 		return
 	var hero: Node2D = get_tree().get_first_node_in_group("hero")
 	var distance_to_hero = hero.global_position - global_position
-	if distance_to_hero.length() < attack_range and not is_dumb:
+	var distance = distance_to_hero.length()
+	if distance < attack_range and distance > TOO_CLOSE_RANGE and not is_dumb:
 		velocity = distance_to_hero.normalized()* attack_speed
 	else:
 		wander_speed.y *= -1 if (global_position.y < wander_upper_limit and wander_speed.y < 0) or (global_position.y > wander_lower_limit and wander_speed.y > 0)  else 1

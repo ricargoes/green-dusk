@@ -25,6 +25,7 @@ size = Vector2(131, 186)
 [node name="BasicEnemy" instance=ExtResource("1_8tfco")]
 script = ExtResource("2_cxugm")
 speed = 200
+xp_value = 250
 max_life_points = 30.0
 
 [node name="Sprite2D" parent="." index="0"]

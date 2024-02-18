@@ -30,6 +30,7 @@ height = 212.0
 script = ExtResource("2_ssoir")
 speed = 800.0
 resource_type = 3
+xp_value = 500
 contact_dps = 10.0
 
 [node name="Sprite2D" parent="." index="0"]

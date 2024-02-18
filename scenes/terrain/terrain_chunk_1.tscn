@@ -1,14 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfg2gs8kx1te8"]
+[gd_scene load_steps=12 format=3 uid="uid://dfg2gs8kx1te8"]
 
 [ext_resource type="PackedScene" uid="uid://ccld1bpjx1tau" path="res://scenes/terrain/terrain_chunk_base.tscn" id="1_vs7ef"]
 [ext_resource type="PackedScene" uid="uid://bqlyqc1ygoqus" path="res://scenes/enemies/spawner.tscn" id="3_eakqu"]
 [ext_resource type="PackedScene" uid="uid://cv5x51jwgqxsq" path="res://scenes/enemies/basic_enemy.tscn" id="3_fab3p"]
 [ext_resource type="PackedScene" uid="uid://bu35il1yoex0l" path="res://scenes/activador.tscn" id="4_jtunb"]
-[ext_resource type="PackedScene" uid="uid://cta648uegc2p3" path="res://scenes/enemies/enemy_biker.tscn" id="4_l4pkk"]
-[ext_resource type="PackedScene" uid="uid://3rhsqxis8lrs" path="res://scenes/enemies/brute_enemy.tscn" id="5_51bqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8syfu"]
-size = Vector2(1791, 391)
+size = Vector2(1795.5, 381.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_126an"]
 size = Vector2(1830.5, 205)
@@ -42,50 +40,108 @@ spawning_frequency_by_level = {
 destination = NodePath("../../Helpers/Dest1")
 activator = NodePath("../../Helpers/Activator")
 
-[node name="Spawner2" parent="Enemies" index="1" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
-position = Vector2(7090, 221)
-spawning_resource = 1
-destination = NodePath("../../Helpers/Dest2")
+[node name="Spawner3" parent="Enemies" index="1" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+position = Vector2(2229, 697)
+spawning_frequency_by_level = {
+1: 2.0,
+2: 6.0,
+3: 10.0,
+4: 15.0,
+5: 20.0
+}
+destination = NodePath("../../Helpers/Dest1")
 activator = NodePath("../../Helpers/Activator")
 
-[node name="BasicEnemy" parent="Enemies" index="2" instance=ExtResource("3_fab3p")]
-position = Vector2(2149, 229)
+[node name="Spawner2" parent="Enemies" index="2" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+position = Vector2(7647, 311)
+spawning_resource = 1
+destination = NodePath("../../Helpers/Dest2")
+activator = NodePath("../../Helpers/Activator3")
 
-[node name="BasicEnemy2" parent="Enemies" index="3" instance=ExtResource("3_fab3p")]
-position = Vector2(2300, 222)
+[node name="Spawner4" parent="Enemies" index="3" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+position = Vector2(4297, 293)
+spawning_resource = 1
+destination = NodePath("../../Helpers/Dest3")
+activator = NodePath("../../Helpers/Activator2")
 
-[node name="BasicEnemy3" parent="Enemies" index="4" instance=ExtResource("3_fab3p")]
-position = Vector2(2771, 729)
+[node name="Spawner5" parent="Enemies" index="4" node_paths=PackedStringArray("activator") instance=ExtResource("3_eakqu")]
+position = Vector2(9128, 503)
+spawning_resource = 4
+activator = NodePath("../../Helpers/Activator3")
 
-[node name="BasicEnemy4" parent="Enemies" index="5" instance=ExtResource("3_fab3p")]
-position = Vector2(2650, 729)
+[node name="Spawner6" parent="Enemies" index="5" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+position = Vector2(7280, 469)
+spawning_resource = 3
+destination = NodePath("../Spawner5")
+activator = NodePath("../../Helpers/Activator4")
 
-[node name="BasicEnemy5" parent="Enemies" index="6" instance=ExtResource("3_fab3p")]
-position = Vector2(2515, 729)
+[node name="Spawner7" parent="Enemies" index="6" node_paths=PackedStringArray("activator") instance=ExtResource("3_eakqu")]
+position = Vector2(9911, 691)
+spawning_resource = 3
+lifetime = 0.5
+activator = NodePath("../../Helpers/Activator5")
 
-[node name="EnemyBiker" parent="Enemies" index="7" instance=ExtResource("4_l4pkk")]
-position = Vector2(153, 547)
+[node name="Spawner8" parent="Enemies" index="7" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+position = Vector2(9916, 574)
+spawning_resource = 3
+lifetime = 0.5
+destination = NodePath("../Spawner5")
+activator = NodePath("../../Helpers/Activator5")
 
-[node name="EnemyBiker2" parent="Enemies" index="8" instance=ExtResource("4_l4pkk")]
-position = Vector2(301, 547)
+[node name="Spawner9" parent="Enemies" index="8" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+position = Vector2(9792, 308)
+spawning_resource = 3
+destination = NodePath("../../Helpers/Activator5")
+activator = NodePath("../../Helpers/Activator5")
 
-[node name="EnemyBiker3" parent="Enemies" index="9" instance=ExtResource("4_l4pkk")]
-position = Vector2(64, 543)
+[node name="Spawner10" parent="Enemies" index="9" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+position = Vector2(9833, -74)
+spawning_resource = 3
+destination = NodePath("../../Helpers/Dest4")
+activator = NodePath("../../Helpers/Activator4")
 
-[node name="BruteEnemy" parent="Enemies" index="10" instance=ExtResource("5_51bqx")]
-position = Vector2(3711, 753)
+[node name="Spawner11" parent="Enemies" index="10" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
+position = Vector2(9932, -164)
+spawning_resource = 3
+lifetime = 0.5
+destination = NodePath("../../Helpers/Dest4")
+activator = NodePath("../../Helpers/Activator4")
+
+[node name="BasicEnemy" parent="Enemies" index="11" instance=ExtResource("3_fab3p")]
+position = Vector2(1725, 590)
+
+[node name="BasicEnemy4" parent="Enemies" index="12" instance=ExtResource("3_fab3p")]
+position = Vector2(2287, 248)
 
 [node name="Dest1" type="Marker2D" parent="Helpers" index="0"]
-position = Vector2(5249, 156)
+position = Vector2(3562, 690)
 
 [node name="Dest2" type="Marker2D" parent="Helpers" index="1"]
-position = Vector2(8633, 210)
+position = Vector2(8939, 270)
 
-[node name="Activator" parent="Helpers" index="2" instance=ExtResource("4_jtunb")]
-position = Vector2(1834, 428)
+[node name="Dest3" type="Marker2D" parent="Helpers" index="2"]
+position = Vector2(5277, 282)
+
+[node name="Dest4" type="Marker2D" parent="Helpers" index="3"]
+position = Vector2(11150, -86)
+
+[node name="Activator" parent="Helpers" index="4" instance=ExtResource("4_jtunb")]
+position = Vector2(1224, 415)
+
+[node name="Activator2" parent="Helpers" index="5" instance=ExtResource("4_jtunb")]
+position = Vector2(2097, 595)
+
+[node name="Activator3" parent="Helpers" index="6" instance=ExtResource("4_jtunb")]
+position = Vector2(6569, 422)
+
+[node name="Activator4" parent="Helpers" index="7" instance=ExtResource("4_jtunb")]
+position = Vector2(8485, 447)
+
+[node name="Activator5" parent="Helpers" index="8" instance=ExtResource("4_jtunb")]
+position = Vector2(10859, 555)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes" index="0"]
-position = Vector2(900, 887)
+position = Vector2(897.75, 891.75)
 shape = SubResource("RectangleShape2D_8syfu")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitboxes" index="1"]
@@ -117,4 +173,4 @@ position = Vector2(9566.75, 403.25)
 shape = SubResource("RectangleShape2D_n4668")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitboxes" index="8"]
-polygon = PackedVector2Array(9841, 883, 10584, 863, 10908, 775, 11298, 708, 11527, 698, 11527, 1051, 9841, 1054)
+polygon = PackedVector2Array(9841, 883, 10584, 863, 10905, 773, 11291, 708, 11531, 692, 11531, 1044, 9841, 1054)

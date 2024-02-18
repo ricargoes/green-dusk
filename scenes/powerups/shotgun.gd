@@ -57,20 +57,20 @@ func set_level(new_level: int):
 			rotation_speed = PI
 			bullets_range = 0.4
 		2:
-			cooldown_time = 0.8
-			rotation_speed = 2*PI
+			cooldown_time = 0.6
+			rotation_speed = PI
 			bullets_range = 0.4
 		3:
-			cooldown_time = 0.8
+			cooldown_time = 0.6
 			rotation_speed = 2*PI
-			bullets_range = 0.6
+			bullets_range = 0.4
 		4:
-			cooldown_time = 0.8
+			cooldown_time = 0.6
 			rotation_speed = 3*PI
 			bullets_range = 0.6
 		5:
-			cooldown_time = 0.8
-			rotation_speed = 4*PI
+			cooldown_time = 0.4
+			rotation_speed = 3*PI
 			bullets_range = 0.6
 	$Cooldown.wait_time = cooldown_time/cooldown_booster
 		

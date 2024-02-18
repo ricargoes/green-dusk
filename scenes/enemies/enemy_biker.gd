@@ -8,7 +8,7 @@ func _process(delta: float) -> void:
 		return
 	var hero: Node2D = get_tree().get_first_node_in_group("hero")
 	var distance_to_hero = hero.global_position - global_position
-	if abs(distance_to_hero.x) > 20:
+	if abs(distance_to_hero.x) > 100:
 		velocity.x = sign(distance_to_hero.x)*speed
 	if not is_on_floor():
 		velocity.y += delta*GameConstants.GRAVITY

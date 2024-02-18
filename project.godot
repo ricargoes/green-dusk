@@ -19,7 +19,6 @@ config/icon="res://resources/ui/icons/sword.png"
 
 [autoload]
 
-OnScreenTerminal="*res://addons/on_screen_terminal/on_screen_terminal.tscn"
 GameConstants="*res://scenes/global/game_constants.gd"
 GameLibrary="*res://scenes/global/game_library.gd"
 PoolManager="*res://scenes/global/pool_manager.gd"
@@ -29,10 +28,6 @@ PoolManager="*res://scenes/global/pool_manager.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/on_screen_terminal/plugin.cfg")
 
 [input]
 
@@ -47,11 +42,6 @@ jump={
 2d_physics/layer_1="hero"
 2d_physics/layer_2="enermies"
 2d_physics/layer_3="terrain"
-
-[on_screen_terminal]
-
-size=Vector2(400, 200)
-enabled=true
 
 [rendering]
 

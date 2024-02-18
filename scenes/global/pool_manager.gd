@@ -14,6 +14,7 @@ const resources_scenes = {
 	PoolResource.BULLET: preload("res://scenes/bullet.tscn"),
 	PoolResource.BASIC_ENEMY: preload("res://scenes/enemies/basic_enemy.tscn"),
 	PoolResource.FLYING_ENEMY: preload("res://scenes/enemies/flying_enemy.tscn"),
+	PoolResource.BIKER_ENEMY: preload("res://scenes/enemies/enemy_biker.tscn"),
 	PoolResource.BRUTE_ENEMY: preload("res://scenes/enemies/brute_enemy.tscn"),
 }
 

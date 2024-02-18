@@ -9,7 +9,7 @@ var hit_damage: float = 20.0
 @export
 var lightning_cooldown: float = 1.0
 @export
-var speed: float = 900
+var speed: float = 700
 
 var lighning_cooldown: float = 1.0
 
@@ -24,7 +24,6 @@ func _process(delta: float) -> void:
 	var distance_to_target: float = (target_x - position.x)
 	position.x += sign(distance_to_target)*speed*delta
 	if abs(distance_to_target) < 100:
-		OnScreenTerminal.log(target_x)
 		target_x = pos_x_left if target_x == pos_x_right else pos_x_right
 	
 func lightning() -> void:
@@ -44,19 +43,19 @@ func set_level(level: int):
 	match level:
 		1:
 			hit_damage = 20.0
-			lightning_cooldown = 0.75
+			lightning_cooldown = 0.8
 		2:
 			hit_damage = 20.0
-			lightning_cooldown = 0.5
+			lightning_cooldown = 0.6
 		3:
 			hit_damage = 40.0
-			lightning_cooldown = 0.5
+			lightning_cooldown = 0.6
 		4:
 			hit_damage = 40.0
-			lightning_cooldown = 0.4
+			lightning_cooldown = 0.6
 		5:
 			hit_damage = 50.0
-			lightning_cooldown = 0.25
+			lightning_cooldown = 0.5
 	$Cooldown.wait_time = lightning_cooldown/cooldown_booster
 
 
