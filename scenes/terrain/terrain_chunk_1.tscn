@@ -31,14 +31,12 @@ size = Vector2(1054.5, 49.5)
 
 [node name="Spawner1" parent="Enemies" index="0" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
 position = Vector2(3575, 81)
-spawning_frequency = 4.0
 destination = NodePath("../../Helpers/Dest1")
 activator = NodePath("../../Helpers/Activator")
 
 [node name="Spawner2" parent="Enemies" index="1" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
 position = Vector2(4326, 327)
 spawning_resource = 1
-spawning_frequency = 4.0
 destination = NodePath("../../Helpers/Dest2")
 activator = NodePath("../../Helpers/Activator")
 
@@ -59,15 +57,12 @@ position = Vector2(2515, 729)
 
 [node name="EnemyBiker" parent="Enemies" index="7" instance=ExtResource("4_l4pkk")]
 position = Vector2(153, 547)
-speed = 800.0
 
 [node name="EnemyBiker2" parent="Enemies" index="8" instance=ExtResource("4_l4pkk")]
 position = Vector2(301, 547)
-speed = 800.0
 
 [node name="EnemyBiker3" parent="Enemies" index="9" instance=ExtResource("4_l4pkk")]
 position = Vector2(64, 543)
-speed = 800.0
 
 [node name="Dest1" type="Marker2D" parent="Helpers" index="0"]
 position = Vector2(3594, 795)

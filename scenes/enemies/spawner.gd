@@ -3,7 +3,13 @@ class_name Spawner extends Marker2D
 @export
 var spawning_resource: PoolManager.PoolResource = PoolManager.PoolResource.FLYING_ENEMY
 @export
-var spawning_frequency: float = 2.0
+var spawning_frequency_by_level: Dictionary = {
+	1: 2.0,
+	2: 4.0,
+	3: 6.0,
+	4: 8.0,
+	5: 10.0
+}
 @export
 var lifetime: float = 1.0
 @export
@@ -22,7 +28,9 @@ func _process(delta: float) -> void:
 	position += velocity*delta
 
 func enable(_by_who = null):
-	$SpawningCooldown.start(1.0/spawning_frequency)
+	var game = get_tree().current_scene
+	
+	$SpawningCooldown.start(1.0/spawning_frequency_by_level[game.difficulty_level])
 	if lifetime > 0:
 		$Lifetime.start(lifetime)
 	velocity = Vector2.ZERO if destination == null else (destination.global_position - global_position)/lifetime

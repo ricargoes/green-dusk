@@ -6,12 +6,14 @@ enum PoolResource {
 	BULLET,
 	BASIC_ENEMY,
 	FLYING_ENEMY,
+	BIKER_ENEMY,
 }
 
 const resources_scenes = {
 	PoolResource.BULLET: preload("res://scenes/bullet.tscn"),
 	PoolResource.BASIC_ENEMY: preload("res://scenes/enemies/enermy.tscn"),
 	PoolResource.FLYING_ENEMY: preload("res://scenes/enemies/flying_enemy.tscn"),
+	PoolResource.BIKER_ENEMY: preload("res://scenes/enemies/enemy_biker.tscn"),
 }
 
 var pool: Dictionary = {}
