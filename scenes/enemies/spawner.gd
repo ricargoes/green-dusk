@@ -5,10 +5,10 @@ var spawning_resource: PoolManager.PoolResource = PoolManager.PoolResource.FLYIN
 @export
 var spawning_frequency_by_level: Dictionary = {
 	1: 2.0,
-	2: 4.0,
-	3: 6.0,
-	4: 8.0,
-	5: 10.0
+	2: 6.0,
+	3: 10.0,
+	4: 14.0,
+	5: 20.0
 }
 @export
 var lifetime: float = 1.0

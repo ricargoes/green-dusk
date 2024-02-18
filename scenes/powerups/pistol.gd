@@ -10,6 +10,7 @@ var arm_rotation_speed: float = PI
 var bullets_range: float = 1
 
 var target: Enemy = null
+var cooldown_booster: float = 1.0
 
 func _ready() -> void:
 	$ShootingCooldown.wait_time = shooting_cooldown
@@ -49,10 +50,11 @@ func set_level(level: int):
 			shooting_cooldown = 0.1
 			arm_rotation_speed = 4*PI
 			bullets_range = 1.5
+	$ShootingCooldown.wait_time = shooting_cooldown/cooldown_booster
 
 func cooldown_boost(boost: float):
+	cooldown_booster = boost
 	$ShootingCooldown.wait_time = shooting_cooldown/boost
-	OnScreenTerminal.log($ShootingCooldown.wait_time)
 
 func select_target():
 	target = null

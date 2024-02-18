@@ -8,6 +8,7 @@ var cooldown_time: float = 1
 var bullets_range: float = 0.4
 
 var level = 1
+var cooldown_booster: float = 1.0
 
 func _ready() -> void:
 	$Cooldown.wait_time = cooldown_time
@@ -45,7 +46,8 @@ func select_target() -> Node2D:
 
 
 func cooldown_boost(boost: float):
-	$Cooldown.wait_time = cooldown_time/boost
+	cooldown_booster = boost
+	$Cooldown.wait_time = cooldown_time/cooldown_booster
 
 func set_level(new_level: int):
 	level = new_level
@@ -70,4 +72,5 @@ func set_level(new_level: int):
 			cooldown_time = 0.8
 			rotation_speed = 4*PI
 			bullets_range = 0.6
+	$Cooldown.wait_time = cooldown_time/cooldown_booster
 		

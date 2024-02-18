@@ -32,6 +32,13 @@ size = Vector2(1054.5, 49.5)
 
 [node name="Spawner1" parent="Enemies" index="0" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_eakqu")]
 position = Vector2(3575, 81)
+spawning_frequency_by_level = {
+1: 2.0,
+2: 6.0,
+3: 10.0,
+4: 15.0,
+5: 20.0
+}
 destination = NodePath("../../Helpers/Dest1")
 activator = NodePath("../../Helpers/Activator")
 

@@ -79,10 +79,10 @@ func get_xp(amount: int):
 
 func level_up():
 	get_tree().paused = true
+	level += 1
 	var can_levelup = $UI/LevelUpScreen.pick_powerup(powerups)
 	if can_levelup:
 		var powerup = await $UI/LevelUpScreen.powerup_selected
-		level += 1
 		xp_threshold = level*1000
 		if powerup != "":
 			equip_powerup(powerup)

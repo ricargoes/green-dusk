@@ -36,12 +36,12 @@ const POWERUPS = {
 		#'icon': preload("res://resources/ui/icons/rocketlauncher.png"),
 		#'scene': preload("res://scenes/powerups/shotgun.tscn")
 	#},
-	#'Mjolnir': {
-		#'type': PowerUpType.Weapon,
-		#'description': 'Orbits around you hitting enermies and casting down lightning like the god of thunder you are',
-		#'icon': preload("res://resources/ui/icons/mjolnir.png"),
-		#'scene': preload("res://scenes/powerups/shotgun.tscn")
-	#},
+	'Mjolnir': {
+		'type': PowerUpType.Weapon,
+		'description': 'Orbits around you hitting enermies and casting down lightning like the god of thunder you are',
+		'icon': preload("res://resources/ui/icons/mjolnir.png"),
+		'scene': preload("res://scenes/powerups/mjolnir.tscn")
+	},
 	'Antiair bird': {
 		'type': PowerUpType.Weapon,
 		'description': 'Target airborne enermies and make them bit the dust',

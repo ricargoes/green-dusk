@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://dlovanld4rtcs"]
+
+[ext_resource type="Texture2D" uid="uid://bjb6b1jrwfeym" path="res://resources/sprites/weapons/Mjolnir.png" id="1_cf0m4"]
+[ext_resource type="Script" path="res://scenes/powerups/mjolnir.gd" id="2_svub6"]
+[ext_resource type="Texture2D" uid="uid://vutwrfqxe4xr" path="res://resources/sprites/weapons/rayo.png" id="3_y8474"]
+
+[sub_resource type="Animation" id="Animation_6vr4f"]
+resource_name = "turn"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_6y8a6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q88sw"]
+_data = {
+"RESET": SubResource("Animation_6y8a6"),
+"turn": SubResource("Animation_6vr4f")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujjhb"]
+size = Vector2(56.0002, 949)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx5i3"]
+size = Vector2(232, 145)
+
+[node name="Mjolnir" type="Node2D" groups=["weapon"]]
+script = ExtResource("2_svub6")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_cf0m4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_q88sw")
+}
+autoplay = "turn"
+
+[node name="Lightning" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Lightning"]
+texture = ExtResource("3_y8474")
+offset = Vector2(0, 454)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lightning"]
+position = Vector2(0, 464.5)
+shape = SubResource("RectangleShape2D_ujjhb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Lightning"]
+position = Vector2(1.00016, 874.5)
+shape = SubResource("RectangleShape2D_mx5i3")
+
+[node name="Probe" type="RayCast2D" parent="."]
+target_position = Vector2(0, 1200)
+collision_mask = 4
+
+[node name="Cooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="LightningFlash" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Cooldown" to="." method="lightning"]
+[connection signal="timeout" from="LightningFlash" to="." method="_on_lightning_flash_timeout"]
