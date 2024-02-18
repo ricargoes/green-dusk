@@ -3,9 +3,11 @@ extends Node2D
 const PISTOL_RANGE = 1000
 
 @export
-var shooting_cooldown: float = 0.3
+var shooting_cooldown: float = 0.5
 @export
 var arm_rotation_speed: float = PI
+@export
+var bullets_range: float = 1
 
 var target: Enemy = null
 
@@ -23,13 +25,30 @@ func _process(delta: float) -> void:
 func shoot():
 	var orientation = rotation
 	var game = get_tree().current_scene
-	game.spawn_bullet(global_position + Vector2.from_angle(orientation)*120, orientation, true)
+	game.spawn_bullet(global_position + Vector2.from_angle(orientation)*120, orientation, true, bullets_range)
 
 func set_level(level: int):
 	match level:
 		1:
-			shooting_cooldown = 0.3
+			shooting_cooldown = 0.5
 			arm_rotation_speed = PI
+			bullets_range = 0.8
+		2:
+			shooting_cooldown = 0.5
+			arm_rotation_speed = 2*PI
+			bullets_range = 1
+		3:
+			shooting_cooldown = 0.3
+			arm_rotation_speed = 2*PI
+			bullets_range = 1
+		4:
+			shooting_cooldown = 0.2
+			arm_rotation_speed = 3*PI
+			bullets_range = 1.2
+		5:
+			shooting_cooldown = 0.1
+			arm_rotation_speed = 4*PI
+			bullets_range = 1.5
 
 func cooldown_boost(boost: float):
 	$ShootingCooldown.wait_time = shooting_cooldown/boost

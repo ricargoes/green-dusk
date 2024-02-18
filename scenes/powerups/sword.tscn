@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://be7qt3ldbvjxr"]
 
-[ext_resource type="Script" path="res://scenes/sword.gd" id="1_uq48t"]
+[ext_resource type="Script" path="res://scenes/powerups/sword.gd" id="1_6g28j"]
 [ext_resource type="Texture2D" uid="uid://e7iq4rrlcxb8" path="res://resources/sprites/pj/pjArmSword.png" id="2_do8tw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngm5w"]
@@ -8,7 +8,7 @@ size = Vector2(17.8891, 103.853)
 
 [node name="Sword" type="Node2D" groups=["weapon"]]
 position = Vector2(0, -27)
-script = ExtResource("1_uq48t")
+script = ExtResource("1_6g28j")
 
 [node name="SwordArm" type="Sprite2D" parent="."]
 texture = ExtResource("2_do8tw")

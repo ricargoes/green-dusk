@@ -3,7 +3,9 @@ extends Sprite2D
 @export
 var rotation_speed = PI
 @export
-var cooldown_time: float = 0.5
+var cooldown_time: float = 1
+@export
+var bullets_range: float = 0.4
 
 var level = 1
 
@@ -12,9 +14,16 @@ func _ready() -> void:
 
 func shoot():
 	var game = get_tree().current_scene
-	game.spawn_bullet(global_position + Vector2.from_angle(rotation)*120, rotation-PI/12, true, 0.5)
-	game.spawn_bullet(global_position + Vector2.from_angle(rotation)*120, rotation, true, 0.5)
-	game.spawn_bullet(global_position + Vector2.from_angle(rotation)*120, rotation+PI/12, true, 0.5)
+	game.spawn_bullet(global_position + Vector2.from_angle(rotation)*120, rotation-PI/12, true, bullets_range)
+	game.spawn_bullet(global_position + Vector2.from_angle(rotation)*120, rotation, true, bullets_range)
+	game.spawn_bullet(global_position + Vector2.from_angle(rotation)*120, rotation+PI/12, true, bullets_range)
+	if level >= 4:
+		game.spawn_bullet(global_position + Vector2.from_angle(rotation)*120, rotation-PI/24, true, bullets_range)
+		game.spawn_bullet(global_position + Vector2.from_angle(rotation)*120, rotation+PI/24, true, bullets_range)
+	if level >= 5:
+		game.spawn_bullet(global_position + Vector2.from_angle(rotation)*120, rotation-PI/6, true, bullets_range)
+		game.spawn_bullet(global_position + Vector2.from_angle(rotation)*120, rotation+PI/6, true, bullets_range)
+	
 
 func _process(delta: float) -> void:
 	var target = select_target()
@@ -42,6 +51,23 @@ func set_level(new_level: int):
 	level = new_level
 	match level:
 		1:
+			cooldown_time = 1
 			rotation_speed = PI
-			cooldown_time = 0.5
+			bullets_range = 0.4
+		2:
+			cooldown_time = 0.8
+			rotation_speed = 2*PI
+			bullets_range = 0.4
+		3:
+			cooldown_time = 0.8
+			rotation_speed = 2*PI
+			bullets_range = 0.6
+		4:
+			cooldown_time = 0.8
+			rotation_speed = 3*PI
+			bullets_range = 0.6
+		5:
+			cooldown_time = 0.8
+			rotation_speed = 4*PI
+			bullets_range = 0.6
 		

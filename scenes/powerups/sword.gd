@@ -13,7 +13,6 @@ func _process(delta: float) -> void:
 func cooldown_boost(boost: float):
 	swing_speed_boost = boost
 
-
 func _on_sword_edge_body_entered(enemy: Enemy) -> void:
 	enemy.hurt(hit_damage)
 
@@ -22,3 +21,18 @@ func set_level(new_level: int):
 		1:
 			swing_speed = PI
 			hit_damage = 4
+		2:
+			swing_speed = 1.2*PI
+			hit_damage = 6
+		3:
+			swing_speed = 1.6*PI
+			hit_damage = 6
+			scale = Vector2(1.3, 1.3)
+		4:
+			swing_speed = 2*PI
+			hit_damage = 6
+			scale = Vector2(1.3, 1.3)
+		5:
+			swing_speed = 4*PI
+			hit_damage = 6
+			scale = Vector2(1.3, 1.3)
