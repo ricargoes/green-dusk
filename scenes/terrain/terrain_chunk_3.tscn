@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://ble53r5wbcn2e"]
+
+[ext_resource type="PackedScene" uid="uid://ccld1bpjx1tau" path="res://scenes/terrain/terrain_chunk_base.tscn" id="1_y8wmj"]
+[ext_resource type="Texture2D" uid="uid://bblbfii3h2u6y" path="res://resources/sprites/Environment/Floor/chunk3Floor.png" id="2_6kbyr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnyoe"]
+size = Vector2(685, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_106xf"]
+size = Vector2(1438, 137)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8g4uc"]
+size = Vector2(964, 198)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j43cn"]
+size = Vector2(1174, 373)
+
+[node name="TerrainChunkBase" instance=ExtResource("1_y8wmj")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_6kbyr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitboxes" index="0"]
+polygon = PackedVector2Array(-3, 701, -3, 1078, 3602, 1076, 3564, 939, 3593, 751, 3633, 731, 3640, 697, 3290, 688, 2684, 605, 2612, 564, 2394, 564, 2306, 544, 2205, 679, 2013, 747, 1837, 817, 1758, 858, 1681, 870, 1126, 868, 1008, 840, 895, 734, 848, 545, 733, 552, 602, 612, 341, 674, 152, 700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes" index="1"]
+position = Vector2(1572.5, 394.5)
+shape = SubResource("RectangleShape2D_dnyoe")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitboxes" index="2"]
+position = Vector2(4720, 622.5)
+shape = SubResource("RectangleShape2D_106xf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitboxes" index="3"]
+position = Vector2(6425, 978)
+shape = SubResource("RectangleShape2D_8g4uc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Hitboxes" index="4"]
+position = Vector2(7938, 890.5)
+shape = SubResource("RectangleShape2D_j43cn")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hitboxes" index="5"]
+polygon = PackedVector2Array(8668, 880, 8668, 1080, 11516, 1081, 11519, 706, 11037, 713, 10832, 656, 10419, 646, 10206, 711, 10041, 725, 9625, 874, 9176, 871, 9007, 886)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Hitboxes" index="6"]
+polygon = PackedVector2Array(8617, 373, 8934, 371, 9293, 381, 9619, 419, 9777, 423, 9769, 476, 9228, 428, 8618, 418)

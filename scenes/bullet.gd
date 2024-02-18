@@ -25,8 +25,6 @@ func _enter_tree():
 	velocity = Vector2.from_angle(orientation)*bullet_speed
 	rotation = orientation
 	time_left = bullet_lifetime
-	
-	OnScreenTerminal.log(time_left)
 
 func _process(delta: float) -> void:
 	var collision = move_and_collide(velocity*delta)

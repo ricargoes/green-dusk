@@ -69,7 +69,62 @@ _data = {
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_17qkh")
-run_time = 30.0
+
+[node name="Lore" type="Label" parent="."]
+offset_left = -251.0
+offset_top = 121.0
+offset_right = 1680.0
+offset_bottom = 398.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Daylight plant vampires 
+want you death!"
+horizontal_alignment = 1
+
+[node name="Tutorial" type="Label" parent="."]
+offset_left = 1928.0
+offset_top = 65.0
+offset_right = 3859.0
+offset_bottom = 202.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Press Space to jump"
+
+[node name="Cheer1" type="Label" parent="."]
+offset_left = 2799.0
+offset_top = 235.0
+offset_right = 4730.0
+offset_bottom = 372.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Escape them!"
+
+[node name="Tutorial2" type="Label" parent="."]
+offset_left = 2721.0
+offset_top = 343.0
+offset_right = 4652.0
+offset_bottom = 480.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Pick your build carefully"
+
+[node name="Cheer2" type="Label" parent="."]
+offset_left = 3269.0
+offset_top = 507.0
+offset_right = 5200.0
+offset_bottom = 644.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Slaughter them!"
+
+[node name="Tutorial3" type="Label" parent="."]
+offset_left = 4404.0
+offset_top = 127.0
+offset_right = 6335.0
+offset_bottom = 264.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "And survive till dusk.."
 
 [node name="Terrain" type="Node2D" parent="."]
 

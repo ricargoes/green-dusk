@@ -7,7 +7,7 @@ var xp_value: int = 200
 @export
 var max_life_points: float = 20.0
 @export
-var contact_dps: float = 50.0
+var contact_dps: float = 5.0
 
 var dead: bool = true
 
@@ -22,6 +22,10 @@ func _ready() -> void:
 func _enter_tree():
 	life_points = max_life_points
 	dead = false
+	_custom_entry_behaviour()
+
+func _custom_entry_behaviour():
+	pass
 
 func _process(delta: float) -> void:
 	if not is_on_floor():
@@ -33,7 +37,7 @@ func _process(delta: float) -> void:
 
 func fall_check():
 	if global_position.y > GameConstants.DEATH_GLOBAL_Y_POSITION:
-		die()
+		shelf()
 
 func contact_attack(delta: float):
 	for body in $ContactDamageArea.get_overlapping_bodies():
@@ -49,5 +53,8 @@ func hurt(damage: float):
 
 func die():
 	defeated.emit(self)
+	shelf()
+
+func shelf():
 	dead = true
 	PoolManager.shelf_instance(self)

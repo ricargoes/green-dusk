@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://f31q7ameb6hm"]
+[gd_scene load_steps=23 format=3 uid="uid://f31q7ameb6hm"]
 
 [ext_resource type="Script" path="res://scenes/hero.gd" id="1_omy4t"]
 [ext_resource type="Texture2D" uid="uid://cipplrmttgmy4" path="res://resources/sprites/pj/pjHead.png" id="2_3f0u1"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ciownt0dopb4i" path="res://resources/sprites/pj/pjRunningLegs1.png" id="6_ejbq7"]
 [ext_resource type="Texture2D" uid="uid://ced1gvm3ejp8b" path="res://resources/sprites/pj/pjRunningLegs2.png" id="7_34yky"]
 [ext_resource type="PackedScene" uid="uid://cdxbhwtpcrqwx" path="res://scenes/level_up_screen.tscn" id="7_y4fjo"]
-[ext_resource type="Texture2D" uid="uid://e7iq4rrlcxb8" path="res://resources/sprites/pj/pjArmSword.png" id="8_8jdhp"]
+[ext_resource type="PackedScene" uid="uid://be7qt3ldbvjxr" path="res://scenes/powerups/sword.tscn" id="9_hr181"]
 [ext_resource type="PackedScene" uid="uid://c8qbjfx63idyx" path="res://scenes/powerups/pistol.tscn" id="9_jqixl"]
 [ext_resource type="Texture2D" uid="uid://bdexcucrlyfrt" path="res://resources/ui/full_life_bar.png" id="13_axndc"]
 [ext_resource type="Texture2D" uid="uid://cuxvaqlgqpm2c" path="res://resources/ui/full_xp_bar.png" id="14_glpkk"]
@@ -58,13 +58,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yq1y"]
-size = Vector2(76, 168)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itkei"]
+radius = 24.0
+height = 172.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lk7si"]
 size = Vector2(53, 137)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_er8d3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33dn5"]
+size = Vector2(1800, 1000)
 
 [node name="Hero" type="CharacterBody2D" groups=["hero"]]
 collision_mask = 4
@@ -83,13 +87,13 @@ sprite_frames = SubResource("SpriteFrames_rcvp2")
 animation = &"run"
 autoplay = "run"
 
-[node name="SwordArm" type="Sprite2D" parent="."]
-texture = ExtResource("8_8jdhp")
-
 [node name="Pistol" parent="." instance=ExtResource("9_jqixl")]
 
+[node name="Sword" parent="." instance=ExtResource("9_hr181")]
+
 [node name="RunningShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_8yq1y")
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_itkei")
 
 [node name="JumpingShape" type="CollisionShape2D" parent="."]
 visible = false
@@ -159,3 +163,25 @@ offset_right = 40.0
 grow_vertical = 0
 auto_height = true
 script = ExtResource("15_1qfb5")
+
+[node name="DeathCount" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "0 enemies slain"
+
+[node name="PlayerSight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSight"]
+shape = SubResource("RectangleShape2D_33dn5")

@@ -21,7 +21,7 @@ var life_points: float = 50.0
 var level: int = 0
 var xp: int = 0
 var xp_threshold: int = 100
-var powerups = { "Pistol": 1 }
+var powerups = { "Pistol": 1, "Sword": 1 }
 var enemies_slain: int = 0
 
 var jump_impulse_time: float = 0.0
@@ -124,3 +124,7 @@ func steal_life(damage: float):
 func on_enermy_defeated(enermy: Enemy) -> void:
 	get_xp(enermy.xp_value)
 	enemies_slain += 1
+	$UI.update_deathcount(enemies_slain)
+
+func get_enemies_on_sight() -> Array:
+	return $PlayerSight.get_overlapping_bodies()

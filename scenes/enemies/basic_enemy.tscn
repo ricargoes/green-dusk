@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv5x51jwgqxsq"]
+[gd_scene load_steps=7 format=3 uid="uid://cv5x51jwgqxsq"]
 
 [ext_resource type="PackedScene" uid="uid://csfarad5ilhw6" path="res://scenes/enemies/enermy.tscn" id="1_8tfco"]
 [ext_resource type="Texture2D" uid="uid://booq2ffceqwgc" path="res://resources/sprites/enemies/baseEnemy1.png" id="2_2smkd"]
+[ext_resource type="Script" path="res://scenes/enemies/basic_enemy.gd" id="2_cxugm"]
 [ext_resource type="Texture2D" uid="uid://cfyok2k0wo6r7" path="res://resources/sprites/enemies/baseEnemy2.png" id="3_cuomi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wio7a"]
@@ -22,6 +23,8 @@ animations = [{
 size = Vector2(131, 186)
 
 [node name="BasicEnemy" instance=ExtResource("1_8tfco")]
+script = ExtResource("2_cxugm")
+speed = 200
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_wio7a")
@@ -30,3 +33,10 @@ autoplay = "default"
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_tj310")
+
+[node name="ReassesDirCooldown" type="Timer" parent="." index="3"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="ReassesDirCooldown" to="." method="_on_reasses_dir_cooldown_timeout"]

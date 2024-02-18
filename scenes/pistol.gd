@@ -1,9 +1,11 @@
 extends Node2D
 
+const PISTOL_RANGE = 1000
+
 @export
 var shooting_cooldown: float = 0.3
 @export
-var arm_rotation_speed: float = 4*PI
+var arm_rotation_speed: float = PI
 
 var target: Enemy = null
 
@@ -11,11 +13,11 @@ func _ready() -> void:
 	$ShootingCooldown.wait_time = shooting_cooldown
 
 func _process(delta: float) -> void:
-	if target == null or target.dead:
+	if target == null or target.dead or target.global_position.distance_to(target.global_position) > PISTOL_RANGE:
 		select_target()
 	
 	var target_orientation = global_position.angle_to_point(target.global_position) if target != null else 0.0
-	aim_to(target_orientation, delta)
+	rotation = rotate_toward(rotation, target_orientation, arm_rotation_speed*delta)
 
 
 func shoot():
@@ -27,18 +29,13 @@ func set_level(level: int):
 	match level:
 		1:
 			shooting_cooldown = 0.3
-			arm_rotation_speed = 4*PI
+			arm_rotation_speed = PI
 
 func cooldown_boost(boost: float):
 	$ShootingCooldown.wait_time = shooting_cooldown/boost
 
 func select_target():
 	target = null
-	var pistol_range = 1000
-	for enemy: Node2D in get_tree().get_nodes_in_group("enemies"):
-		if (enemy.global_position - global_position).length() < pistol_range:
-			target = enemy
-
-func aim_to(target_orientation: float, delta: float):
-	var rotation_strength = fmod(target_orientation-rotation, PI)/PI
-	rotation += rotation_strength*arm_rotation_speed*delta
+	var hero: Node2D = get_tree().get_first_node_in_group("hero")
+	var enemies: Array = hero.get_enemies_on_sight()
+	target = null if enemies.is_empty() else enemies[randi() % enemies.size()]

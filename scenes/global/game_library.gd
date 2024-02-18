@@ -12,9 +12,9 @@ const POWERUPS = {
 		'icon': preload("res://resources/ui/icons/pistol.png"),
 		'scene': preload("res://scenes/powerups/pistol.tscn")
 	},
-	'Sword and shield': {
+	'Sword': {
 		'type': PowerUpType.Weapon,
-		'description': 'Slash nearby enermies while an orbiting shield protects you',
+		'description': 'Slash nearby enermies with a mighty sword.',
 		'icon': preload("res://resources/ui/icons/sword.png"),
 		'scene': preload("res://scenes/powerups/boomerang.tscn")
 	},
@@ -52,7 +52,7 @@ const POWERUPS = {
 		'type': PowerUpType.Passive,
 		'description': 'Make yourself harder to kill: HP boost.',
 		'icon': preload("res://resources/ui/icons/armour.png"),
-		'levels': {1: 20, 2: 20, 3: 30, 4: 30, 5: 50}
+		'levels': {1: 20, 2: 40, 3: 70, 4: 100, 5: 150}
 	},
 	"Invisibility cloak": {
 		'type': PowerUpType.Passive,
@@ -64,7 +64,7 @@ const POWERUPS = {
 		'type': PowerUpType.Passive,
 		'description': 'Your are getting nervous rather than alert. Well, everything helps. Reduces cooldowns.',
 		'icon': preload("res://resources/ui/icons/badCoffee.png"),
-		'levels': {1: 10, 2: 30, 3: 60, 4: 100, 5: 150}
+		'levels': {1: 110, 2: 130, 3: 160, 4: 200, 5: 250}
 	},
 	'Dark Necrogrimoire': {
 		'type': PowerUpType.Passive,

@@ -28,8 +28,9 @@ script = ExtResource("2_vyr0w")
 wander_upper_limit = 200.0
 wander_lower_limit = 500.0
 wander_speed = Vector2(-300, 200)
-attack_speed = 300.0
+attack_speed = 600.0
 attack_range = 500
+resource_type = 2
 
 [node name="Sprite2D" parent="." index="0"]
 self_modulate = Color(1, 0.541176, 0, 1)

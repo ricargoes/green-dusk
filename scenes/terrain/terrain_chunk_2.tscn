@@ -19,6 +19,7 @@ texture = ExtResource("2_ae2gx")
 
 [node name="FlyingEnemy" parent="Enemies" index="0" instance=ExtResource("3_2fiq6")]
 position = Vector2(2172, 309)
+attack_speed = 600.0
 
 [node name="Spawner" parent="Enemies" index="1" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("4_if8s2")]
 position = Vector2(2637, 512)

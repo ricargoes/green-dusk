@@ -7,7 +7,7 @@ var wander_lower_limit: float =  500
 @export
 var wander_speed := Vector2(-300, 200)
 @export
-var attack_speed: float = 300
+var attack_speed: float = 600
 @export
 var attack_range: int = 500
 
@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	var distance_to_hero = hero.global_position - global_position
 	if distance_to_hero.length() < attack_range:
 		velocity = distance_to_hero.normalized()* attack_speed
+		$Sprite2D.scale.x = 1 if velocity.x < 0 else -1
 	else:
 		wander_speed.y *= -1 if (global_position.y < wander_upper_limit and wander_speed.y < 0) or (global_position.y > wander_lower_limit and wander_speed.y > 0)  else 1
 		velocity = wander_speed

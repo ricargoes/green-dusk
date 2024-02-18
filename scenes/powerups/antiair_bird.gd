@@ -14,12 +14,14 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if target == null or target.dead:
-		var min_distance = 1200
+		var min_distance = null
 		var hero: Node2D = get_tree().get_first_node_in_group("hero")
-		for enemy: Enemy in get_tree().get_nodes_in_group("airborne"):
-			var distance_to_hero = (enemy.global_position - hero.global_position).length()
-			if distance_to_hero < min_distance:
-				min_distance = distance_to_hero
+		for enemy: Enemy in hero.get_enemies_on_sight():
+			if not enemy.is_in_group("airborne"):
+				continue
+			var distance_squared_to_hero = hero.global_position.distance_squared_to(enemy.global_position)
+			if min_distance != null and distance_squared_to_hero < min_distance:
+				min_distance = distance_squared_to_hero
 				target = enemy
 		if target != null and not target.dead:
 			$Cooldown.start()
