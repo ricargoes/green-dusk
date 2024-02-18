@@ -16,7 +16,7 @@ var damage: float = 10.0
 var time_left: float = 1
 
 func _enter_tree():
-	collision_mask = 4
+	collision_mask = 0
 	if is_player:
 		collision_mask += 2
 	else:

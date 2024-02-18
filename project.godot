@@ -51,7 +51,7 @@ jump={
 [on_screen_terminal]
 
 size=Vector2(400, 200)
-enabled=true
+enabled=false
 
 [rendering]
 

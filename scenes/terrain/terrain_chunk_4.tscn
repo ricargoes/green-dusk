@@ -25,13 +25,45 @@ texture = ExtResource("2_l3nf5")
 [node name="Spawner" parent="Enemies" index="0" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_e3wur")]
 position = Vector2(5873, 509)
 spawning_resource = 1
-spawning_frequency = 20.0
 destination = NodePath("../../Helpers/Marker2D")
 activator = NodePath("../../Helpers/Activator")
 
-[node name="Spawner2" parent="Enemies" index="1" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_e3wur")]
-position = Vector2(4426, 780)
-spawning_frequency = 20.0
+[node name="Spawner4" parent="Enemies" index="1" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_e3wur")]
+position = Vector2(2711, 213)
+spawning_resource = 3
+destination = NodePath("../../Helpers/Marker2D")
+activator = NodePath("../../Helpers/Activator2")
+
+[node name="Spawner8" parent="Enemies" index="2" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_e3wur")]
+position = Vector2(2711, 697)
+spawning_resource = 3
+destination = NodePath("../../Helpers/Marker2D")
+activator = NodePath("../../Helpers/Activator2")
+
+[node name="Spawner5" parent="Enemies" index="3" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_e3wur")]
+position = Vector2(9667, 590)
+spawning_resource = 1
+destination = NodePath("../../Helpers/Marker2D3")
+activator = NodePath("../../Helpers/Activator3")
+
+[node name="Spawner7" parent="Enemies" index="4" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_e3wur")]
+position = Vector2(9667, 65)
+destination = NodePath("../../Helpers/Marker2D4")
+activator = NodePath("../../Helpers/Activator3")
+
+[node name="Spawner6" parent="Enemies" index="5" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_e3wur")]
+position = Vector2(10340, 617)
+spawning_resource = 4
+destination = NodePath("../../Helpers/Marker2D3")
+activator = NodePath("../../Helpers/Activator3")
+
+[node name="Spawner2" parent="Enemies" index="6" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_e3wur")]
+position = Vector2(4466, 107)
+destination = NodePath("../../Helpers/Marker2D2")
+activator = NodePath("../../Helpers/Activator2")
+
+[node name="Spawner3" parent="Enemies" index="7" node_paths=PackedStringArray("destination", "activator") instance=ExtResource("3_e3wur")]
+position = Vector2(6646, 40)
 destination = NodePath("../../Helpers/Marker2D2")
 activator = NodePath("../../Helpers/Activator2")
 
@@ -41,11 +73,20 @@ position = Vector2(7446, 498)
 [node name="Marker2D2" type="Marker2D" parent="Helpers" index="1"]
 position = Vector2(5443, 170)
 
-[node name="Activator" parent="Helpers" index="2" instance=ExtResource("4_cgn8n")]
+[node name="Marker2D3" type="Marker2D" parent="Helpers" index="2"]
+position = Vector2(9977, 681)
+
+[node name="Marker2D4" type="Marker2D" parent="Helpers" index="3"]
+position = Vector2(10313, 76)
+
+[node name="Activator" parent="Helpers" index="4" instance=ExtResource("4_cgn8n")]
 position = Vector2(4219, 513)
 
-[node name="Activator2" parent="Helpers" index="3" instance=ExtResource("4_cgn8n")]
-position = Vector2(1646, 442)
+[node name="Activator2" parent="Helpers" index="5" instance=ExtResource("4_cgn8n")]
+position = Vector2(1067, 348)
+
+[node name="Activator3" parent="Helpers" index="6" instance=ExtResource("4_cgn8n")]
+position = Vector2(8090, 429)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes" index="0"]
 position = Vector2(3581, 892.75)
@@ -64,10 +105,10 @@ position = Vector2(9948.5, 392.5)
 shape = SubResource("RectangleShape2D_4y0u6")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitboxes" index="4"]
-polygon = PackedVector2Array(2, 708, 1, 1075, 2849, 1075, 2851, 879, 2428, 888, 2295, 873, 1858, 865, 1636, 771, 1448, 714, 1330, 717, 1132, 653, 711, 646, 617, 683, 486, 700)
+polygon = PackedVector2Array(2, 715, 1, 1075, 2849, 1075, 2851, 879, 2428, 888, 2295, 873, 1858, 865, 1636, 771, 1448, 714, 1330, 717, 1132, 653, 711, 646, 617, 683, 486, 700)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hitboxes" index="5"]
 polygon = PackedVector2Array(1742, 427, 2249, 378, 2899, 372, 2899, 419, 2268, 427, 1753, 476)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Hitboxes" index="6"]
-polygon = PackedVector2Array(7920, 1077, 11518, 1073, 11518, 696, 11278, 693, 10930, 617, 10800, 555, 10672, 549, 10623, 739, 10511, 833, 10361, 872, 9833, 870, 9675, 819, 9487, 737, 9318, 680, 9245, 598, 9213, 548, 8908, 566, 8785, 618, 8202, 683, 8047, 688, 7886, 701, 7884, 734, 7926, 759, 7957, 852, 7953, 963)
+polygon = PackedVector2Array(7920, 1077, 11518, 1073, 11518, 696, 11278, 693, 10954, 627, 10829, 633, 10731, 672, 10623, 739, 10511, 833, 10361, 872, 9833, 870, 9675, 819, 9487, 737, 9318, 680, 9245, 598, 9213, 548, 8908, 566, 8785, 618, 8202, 683, 8047, 688, 7886, 701, 7884, 734, 7926, 759, 7957, 852, 7953, 963)

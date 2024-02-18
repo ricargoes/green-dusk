@@ -31,6 +31,7 @@ wander_speed = Vector2(-300, 200)
 attack_speed = 500.0
 attack_range = 500
 resource_type = 2
+xp_value = 300
 
 [node name="Sprite2D" parent="." index="0"]
 self_modulate = Color(1, 0.541176, 0, 1)

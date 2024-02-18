@@ -28,7 +28,7 @@ height = 234.0
 [node name="BruteEnemy" instance=ExtResource("1_pq3pv")]
 speed = 300.0
 resource_type = 4
-xp_value = 500
+xp_value = 800
 max_life_points = 50.0
 contact_dps = 50.0
 

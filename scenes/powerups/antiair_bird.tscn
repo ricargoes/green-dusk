@@ -65,7 +65,7 @@ shape = SubResource("CircleShape2D_m0bff")
 libraries = {
 "": SubResource("AnimationLibrary_e6ckt")
 }
-speed_scale = 2.0
+speed_scale = 4.0
 
 [node name="Cooldown" type="Timer" parent="."]
 

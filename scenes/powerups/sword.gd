@@ -19,20 +19,17 @@ func _on_sword_edge_body_entered(enemy: Enemy) -> void:
 func set_level(new_level: int):
 	match new_level:
 		1:
-			swing_speed = PI
-			hit_damage = 4
+			swing_speed = 1.5*PI
+			hit_damage = 10
 		2:
-			swing_speed = 1.2*PI
-			hit_damage = 6
-		3:
-			swing_speed = 1.6*PI
-			hit_damage = 6
-			scale = Vector2(1.3, 1.3)
-		4:
 			swing_speed = 2*PI
-			hit_damage = 6
-			scale = Vector2(1.3, 1.3)
+			hit_damage = 12
+		3:
+			swing_speed = 2.5*PI
+			hit_damage = 14
+		4:
+			swing_speed = 3*PI
+			hit_damage = 16
 		5:
-			swing_speed = 4*PI
-			hit_damage = 6
-			scale = Vector2(1.3, 1.3)
+			swing_speed = 5*PI
+			hit_damage = 16

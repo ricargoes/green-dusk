@@ -15,7 +15,7 @@ var evasion: int = 0
 @export
 var attack_frecuency_boost: float = 1.0
 @export
-var life_steal: float = 0.0
+var life_steal: float = 10.0
 
 var life_points: float = 50.0
 var level: int = 0
@@ -83,7 +83,7 @@ func level_up():
 	var can_levelup = $UI/LevelUpScreen.pick_powerup(powerups)
 	if can_levelup:
 		var powerup = await $UI/LevelUpScreen.powerup_selected
-		xp_threshold = level*1000
+		xp_threshold = level*700
 		if powerup != "":
 			equip_powerup(powerup)
 	get_tree().paused = false
@@ -119,7 +119,7 @@ func equip_powerup(powerup_name: String):
 	%Summary.sync_powerups(powerups)
 
 func steal_life(damage: float):
-	var life_stealed = life_steal*damage
+	var life_stealed = life_steal/100*damage
 	life_points = min(max_life_points, life_points+life_stealed)
 	$UI.sync_life(life_points, max_life_points)
 

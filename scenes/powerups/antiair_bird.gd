@@ -5,12 +5,12 @@ var speed: float = 900
 @export
 var damage: float = 24.0
 @export
-var cooldown_time: float = 1.5
+var cooldown_time: float = 1.0
 
 var target: Enemy = null
 
 func _ready() -> void:
-	$Cooldown.wait_time = cooldown_time - 0.5
+	$Cooldown.wait_time = cooldown_time
 
 func _process(delta: float) -> void:
 	if not is_inside_tree():
@@ -49,23 +49,23 @@ func set_level(level: int):
 		1:
 			speed = 900
 			damage = 24.0
-			cooldown_time = 1.5
+			cooldown_time = 1.0
 		2:
 			speed = 1500
 			damage = 24.0
-			cooldown_time = 1.0
+			cooldown_time = 0.8
 		3:
 			speed = 1500
 			damage = 30.0
-			cooldown_time = 1.0
+			cooldown_time = 0.8
 			scale = Vector2(1.5, 1.5)
 		4:
 			speed = 1500
 			damage = 30.0
-			cooldown_time = 0.8
+			cooldown_time = 0.6
 			scale = Vector2(2, 2)
 		5:
 			speed = 1500
 			damage = 30.0
-			cooldown_time = 0.6
+			cooldown_time = 0.3
 			scale = Vector2(2.5, 2.5)

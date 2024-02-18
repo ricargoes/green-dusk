@@ -20,7 +20,8 @@ func _ready() -> void:
 	defeated.connect(hero.on_enermy_defeated)
 
 func _enter_tree():
-	life_points = max_life_points
+	var difficulty_level = get_tree().current_scene.difficulty_level
+	life_points = max_life_points*(1+(difficulty_level-1)/2.0)
 	dead = false
 	_custom_entry_behaviour()
 

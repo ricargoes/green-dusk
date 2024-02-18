@@ -6,7 +6,7 @@ var pos_left := Vector2(-800, 0)
 @export
 var pos_right := Vector2(800, 0)
 @export
-var dps: float = 30.0
+var dps: float = 40.0
 @export
 var speed: float = 900
 
@@ -31,29 +31,29 @@ func set_level(level: int):
 		1:
 			pos_left = Vector2(-400, 0)
 			pos_right = Vector2(400, 0)
-			dps = 30.0
+			dps = 60.0
 			speed = 600
 		2:
 			pos_left = Vector2(-600, 0)
 			pos_right = Vector2(600, 0)
-			dps = 30.0
+			dps = 60.0
 			speed = 900
 			scale = Vector2(1.5, 1.5)
 		3:
 			pos_left = Vector2(-800, 0)
 			pos_right = Vector2(800, 0)
-			dps = 30.0
+			dps = 60.0
 			speed = 900
 			scale = Vector2(2.0, 2.0)
 		4:
 			pos_left = Vector2(-800, 0)
 			pos_right = Vector2(800, 0)
-			dps = 40.0
+			dps = 80.0
 			speed = 900
 			scale = Vector2(2.0, 2.0)
 		5:
 			pos_left = Vector2(-800, 0)
 			pos_right = Vector2(800, 0)
-			dps = 50.0
+			dps = 100.0
 			speed = 1200
 			scale = Vector2(4.0, 4.0)

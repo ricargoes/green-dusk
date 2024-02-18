@@ -16,7 +16,7 @@ func _ready() -> void:
 	$ShootingCooldown.wait_time = shooting_cooldown
 
 func _process(delta: float) -> void:
-	if target == null or target.dead or target.global_position.distance_to(target.global_position) > PISTOL_RANGE:
+	if target == null or target.dead or global_position.distance_to(target.global_position) > PISTOL_RANGE:
 		select_target()
 	
 	var target_orientation = global_position.angle_to_point(target.global_position) if target != null else 0.0
@@ -32,7 +32,7 @@ func set_level(level: int):
 	match level:
 		1:
 			shooting_cooldown = 0.5
-			arm_rotation_speed = PI
+			arm_rotation_speed = 1.5*PI
 			bullets_range = 0.8
 		2:
 			shooting_cooldown = 0.5
