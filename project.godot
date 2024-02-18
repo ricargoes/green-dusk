@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="GreenDusk"
+config/description="An endless runner mets vampire  survivors."
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/image="res://resources/cover.png"
 config/icon="res://resources/ui/icons/sword.png"
 
 [autoload]
