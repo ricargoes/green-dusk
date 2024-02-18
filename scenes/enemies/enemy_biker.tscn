@@ -19,16 +19,17 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jy52n"]
-size = Vector2(215, 197.75)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7atp"]
+size = Vector2(132, 212.25)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4qfx"]
-radius = 58.0
-height = 228.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ijjl"]
+radius = 55.0
+height = 212.0
 
 [node name="EnemyBiker" instance=ExtResource("1_qhg13")]
 script = ExtResource("2_ssoir")
 speed = 800.0
+resource_type = 3
 contact_dps = 10.0
 
 [node name="Sprite2D" parent="." index="0"]
@@ -36,9 +37,9 @@ sprite_frames = SubResource("SpriteFrames_iwebx")
 autoplay = "default"
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(-6, 34.875)
-shape = SubResource("RectangleShape2D_jy52n")
+position = Vector2(10, 27.875)
+shape = SubResource("RectangleShape2D_v7atp")
 
 [node name="CollisionShape2D" parent="ContactDamageArea" index="0"]
-position = Vector2(16, 4)
-shape = SubResource("CapsuleShape2D_n4qfx")
+position = Vector2(19, 28)
+shape = SubResource("CapsuleShape2D_8ijjl")

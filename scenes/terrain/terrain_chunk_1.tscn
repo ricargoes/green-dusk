@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfg2gs8kx1te8"]
+[gd_scene load_steps=14 format=3 uid="uid://dfg2gs8kx1te8"]
 
 [ext_resource type="PackedScene" uid="uid://ccld1bpjx1tau" path="res://scenes/terrain/terrain_chunk_base.tscn" id="1_vs7ef"]
 [ext_resource type="PackedScene" uid="uid://bqlyqc1ygoqus" path="res://scenes/enemies/spawner.tscn" id="3_eakqu"]
 [ext_resource type="PackedScene" uid="uid://cv5x51jwgqxsq" path="res://scenes/enemies/basic_enemy.tscn" id="3_fab3p"]
 [ext_resource type="PackedScene" uid="uid://bu35il1yoex0l" path="res://scenes/activador.tscn" id="4_jtunb"]
 [ext_resource type="PackedScene" uid="uid://cta648uegc2p3" path="res://scenes/enemies/enemy_biker.tscn" id="4_l4pkk"]
+[ext_resource type="PackedScene" uid="uid://3rhsqxis8lrs" path="res://scenes/enemies/brute_enemy.tscn" id="5_51bqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8syfu"]
 size = Vector2(1791, 391)
@@ -63,6 +64,9 @@ position = Vector2(301, 547)
 
 [node name="EnemyBiker3" parent="Enemies" index="9" instance=ExtResource("4_l4pkk")]
 position = Vector2(64, 543)
+
+[node name="BruteEnemy" parent="Enemies" index="10" instance=ExtResource("5_51bqx")]
+position = Vector2(3711, 753)
 
 [node name="Dest1" type="Marker2D" parent="Helpers" index="0"]
 position = Vector2(3594, 795)
