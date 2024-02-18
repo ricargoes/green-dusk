@@ -131,8 +131,7 @@ text = "And survive till dusk.."
 [node name="TerrainChunk1" parent="Terrain" instance=ExtResource("2_kfbcc")]
 
 [node name="Hero" parent="." instance=ExtResource("1_2n3he")]
-position = Vector2(250, 593)
-player_speed = 500
+position = Vector2(974, 593)
 
 [node name="Bullets" type="Node2D" parent="."]
 

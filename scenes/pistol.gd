@@ -33,6 +33,7 @@ func set_level(level: int):
 
 func cooldown_boost(boost: float):
 	$ShootingCooldown.wait_time = shooting_cooldown/boost
+	OnScreenTerminal.log($ShootingCooldown.wait_time)
 
 func select_target():
 	target = null

@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cta648uegc2p3"]
+
+[ext_resource type="PackedScene" uid="uid://csfarad5ilhw6" path="res://scenes/enemies/enermy.tscn" id="1_qhg13"]
+[ext_resource type="Texture2D" uid="uid://bgup77dmgpcv8" path="res://resources/sprites/enemies/ciclista1.png" id="2_dgbk3"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_biker.gd" id="2_ssoir"]
+[ext_resource type="Texture2D" uid="uid://b3ks5li162qfw" path="res://resources/sprites/enemies/ciclista2.png" id="3_gel32"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwebx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dgbk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gel32")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jy52n"]
+size = Vector2(215, 197.75)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4qfx"]
+radius = 58.0
+height = 228.0
+
+[node name="EnemyBiker" instance=ExtResource("1_qhg13")]
+script = ExtResource("2_ssoir")
+speed = 800.0
+contact_dps = 10.0
+
+[node name="Sprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_iwebx")
+autoplay = "default"
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-6, 34.875)
+shape = SubResource("RectangleShape2D_jy52n")
+
+[node name="CollisionShape2D" parent="ContactDamageArea" index="0"]
+position = Vector2(16, 4)
+shape = SubResource("CapsuleShape2D_n4qfx")

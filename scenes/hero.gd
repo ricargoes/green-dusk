@@ -4,7 +4,7 @@ const JUMP_FORCE = 3000
 const MAX_JUMP_IMPULSE_TIME: float = 0.3
 
 @export
-var player_speed: int = 200
+var player_speed: int = 500
 
 @export
 var max_life_points: int = 50
@@ -79,12 +79,13 @@ func get_xp(amount: int):
 
 func level_up():
 	get_tree().paused = true
-	$UI/LevelUpScreen.pick_powerup()
+	$UI/LevelUpScreen.pick_powerup(powerups)
 	var powerup = await $UI/LevelUpScreen.powerup_selected
 	get_tree().paused = false
 	level += 1
 	xp_threshold = level*1000
-	equip_powerup(powerup)
+	if powerup != "":
+		equip_powerup(powerup)
 
 func equip_powerup(powerup_name: String):
 	var powerup = GameLibrary.POWERUPS[powerup_name]
@@ -104,7 +105,6 @@ func equip_powerup(powerup_name: String):
 				evasion = boost_value
 			'Bad coffee':
 				attack_frecuency_boost = boost_value/100.0
-				get_tree().call_group("weapons", "cooldown_boost", attack_frecuency_boost)
 			'Dark Necrogrimoire':
 				life_steal = boost_value/100.0
 	elif powerup["type"] == GameLibrary.PowerUpType.Weapon:
@@ -112,8 +112,8 @@ func equip_powerup(powerup_name: String):
 			var weapon_instance = powerup.scene.instantiate()
 			weapon_instance.name = powerup_name
 			add_child(weapon_instance)
-		
 		get_node(powerup_name).set_level(powerups[powerup_name])
+	get_tree().call_group("weapon", "cooldown_boost", attack_frecuency_boost)
 	%Summary.sync_powerups(powerups)
 
 func steal_life(damage: float):
